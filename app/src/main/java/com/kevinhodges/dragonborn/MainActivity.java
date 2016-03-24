@@ -1,10 +1,16 @@
 package com.kevinhodges.dragonborn;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+
+import com.kevinhodges.dragonborn.utils.MusicService;
 
 import java.util.ArrayList;
 
@@ -13,23 +19,23 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mainRecyclerView;
     private ArrayList<String> raceList = new ArrayList<>();
     private ArrayList<String> chapter1 = new ArrayList<>();
+    private boolean mBackgroundMusicBoolean;
+//    private BackgroundMusic mBackgroundMusic;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        raceList.add("From where do your people come?");
-        raceList.add("Urth, the land of the Uman. Brave and courageous, these people make up the majority of Evon. The Uman have waged millennia of war against the Loken in defense of it's people. Though the Uman front is weakening from many years of war against the Loken and Risen, they have developed the strongest resilience in all of Avon - Uman have much higher health than the other races and have the ability to heal in combat.");
-        raceList.add("Talion, home of the magical and secretive Faerie. Nearly wiped out by the Loken many years ago if not for the Uman assistance, Talion is only just now becoming what it once was. Although small in stature and only representing a very small portion of Evon's people, they are the most feared in Avon because of their mastery of black magic. Faerie also excel in areas of stealth and luck and have the ability to flee from combat.");
-        raceList.add("Duunbar is the home of the Loken - massive brutes that thrive in combat and are driven by the destruction of Evon's people. Duunbar's proximity to Urth has allowed nearly 3 millenia of war between these two factions. The Loken have survived through their pillaging of Uman towns and homes. While not the most intelligent beings, their superior weapon training and size allows them to wield massive weapons at their foes.");
-        raceList.add("Beneath Urth lie the Urthen Crypts, here rest the corpses of all ancient Urthen warriors. Crossed many years ago by the Uman King 'Uther', these warriors lie in wait for the day they may avenge their death. In an attempt at destroying Urth, Loken Shaman have raised them from the dead and forced them to wage war against the Urth and Talion. Although the Risen are fairly weak, the dead do not tire, they do not have the burden of stamina");
-        raceList.add("Your adventure begins...");
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+//        mBackgroundMusic = new BackgroundMusic();
+//        mBackgroundMusicBoolean = false;
 
-
-
-
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        editor = sharedPreferences.edit();
 
         //UI Declarations///////////////////////////////////////////////////////////
         mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main);
@@ -57,4 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent svc = new Intent(this, MusicService.class);
+        startService(svc);
+    }
+
+
 }

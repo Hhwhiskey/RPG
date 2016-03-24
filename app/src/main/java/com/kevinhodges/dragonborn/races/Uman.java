@@ -11,6 +11,7 @@ public class Uman {
     private int intelligence = 50;
     private int stealth = 50;
     private int luck = 50;
+    private int stats = 450;
     private String trait = "Heal";
 
     public Uman() {

@@ -3,15 +3,17 @@
     package="com.kevinhodges.dragonborn">
 
     <application
+        android:name=".application.DragonbornApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <service android:name=".utils.MusicService" android:stopWithTask="true"
+            />
 
         <activity
-            android:name=".activities.StartActivity"
-            >
+            android:name=".activities.TitleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

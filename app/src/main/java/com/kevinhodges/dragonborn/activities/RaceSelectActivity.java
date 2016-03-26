@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -27,6 +28,10 @@ public class RaceSelectActivity extends AppCompatActivity {
 //    private BackgroundMusic mBackgroundMusic;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private Intent svc;
+    private boolean isMusicPlaying;
+    private boolean isActivityIntent;
+    private static final String TAG = "Music";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +44,11 @@ public class RaceSelectActivity extends AppCompatActivity {
 
 //        mBackgroundMusicBoolean = false;
 
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = sharedPreferences.edit();
+
+        isMusicPlaying = sharedPreferences.getBoolean("isMusicPlaying", false);
 
         String intro = "You are awoken by a nightmare of your home under attack. A strange, but familiar voice spoke to you. It warned that without you, all your people will parrish. To which of these people do you have allegiance to?";
         final String uman = "Urth, the land of the Uman. Brave and courageous, these people make up the majority of Evon. The Uman have waged millennia of war against the Loken in defense of it's people. Though the Uman front is weakening from many years of war against the Loken and Risen, they have developed the strongest resilience in all of Evon - Uman have the ability to heal slowly, over time.";
@@ -142,8 +150,7 @@ public class RaceSelectActivity extends AppCompatActivity {
 
                 Intent MainIntent = new Intent(RaceSelectActivity.this, MainActivity.class);
                 startActivity(MainIntent);
-
-
+                isActivityIntent = true;
             }
         });
 
@@ -153,7 +160,32 @@ public class RaceSelectActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Intent svc = new Intent(this, MusicService.class);
-        startService(svc);
+
+        Log.d(TAG, "isMusicPlaying = " + isMusicPlaying);
+
+        isActivityIntent = false;
+
+        if (!isMusicPlaying) {
+            svc = new Intent(this, MusicService.class);
+            startService(svc);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (!isActivityIntent) {
+            svc = new Intent(this, MusicService.class);
+            stopService(svc);
+            editor.putBoolean("isMusicPlaying", false);
+            editor.commit();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        isActivityIntent = true;
     }
 }

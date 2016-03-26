@@ -3,8 +3,10 @@ package com.kevinhodges.dragonborn.utils;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 
 import com.kevinhodges.dragonborn.R;
 
@@ -13,6 +15,8 @@ import com.kevinhodges.dragonborn.R;
  */
 public class MusicService extends Service {
     MediaPlayer player;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public IBinder onBind(Intent arg0) {
         return null;
@@ -21,6 +25,10 @@ public class MusicService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        editor = sharedPreferences.edit();
+
         player = MediaPlayer.create(this, R.raw.main_theme);
         player.setLooping(true);
         player.setVolume(100,100);
@@ -28,6 +36,8 @@ public class MusicService extends Service {
     }
     public int onStartCommand(Intent intent, int flags, int startId) {
         player.start();
+        editor.putBoolean("isMusicPlaying", true);
+        editor.commit();
         return 1;
     }
 
@@ -37,10 +47,6 @@ public class MusicService extends Service {
     public IBinder onUnBind(Intent arg0) {
         // TO DO Auto-generated method
         return null;
-    }
-
-    public void onStop() {
-
     }
 
     @Override
@@ -55,8 +61,6 @@ public class MusicService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        player.stop();
-        player.release();
         return super.onUnbind(intent);
     }
 }

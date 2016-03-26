@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 //    private BackgroundMusic mBackgroundMusic;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private Intent svc;
+    private boolean isMusicPlaying;
+    private boolean isActivityIntent;
+    private static final String TAG = "Music";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,12 @@ public class MainActivity extends AppCompatActivity {
 //        mBackgroundMusic = new BackgroundMusic();
 //        mBackgroundMusicBoolean = false;
 
+        isActivityIntent = false;
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = sharedPreferences.edit();
+
+        isMusicPlaying = sharedPreferences.getBoolean("isMusicPlaying", false);
 
         //UI Declarations///////////////////////////////////////////////////////////
         mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main);
@@ -67,8 +76,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Intent svc = new Intent(this, MusicService.class);
-        startService(svc);
+
+        Log.d(TAG, "isMusicPlaying = " + isMusicPlaying);
+
+        isActivityIntent = false;
+
+        if (!isMusicPlaying) {
+            svc = new Intent(this, MusicService.class);
+            startService(svc);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (!isActivityIntent) {
+            svc = new Intent(this, MusicService.class);
+            stopService(svc);
+            editor.putBoolean("isMusicPlaying", false);
+            editor.commit();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        isActivityIntent = true;
     }
 
 

@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         isMusicPlaying = sharedPreferences.getBoolean("isMusicPlaying", false);
 
         //UI Declarations///////////////////////////////////////////////////////////
-        mainRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main);
         ///////////////////////////////////////////////////////////////////////////
     }
 

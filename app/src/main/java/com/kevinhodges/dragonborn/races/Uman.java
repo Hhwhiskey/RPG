@@ -7,12 +7,12 @@ public class Uman {
 
     private int health = 200;
     private int stamina = 50;
-    private int strength = 50;
-    private int intelligence = 50;
-    private int stealth = 50;
-    private int luck = 50;
-    private int stats = 450;
-    private String trait = "Heal";
+    private int attackPower = 100;
+    private int armor = 20;
+    private int gold = 10;
+
+    private boolean massiveWeapons = false;
+    private String trait = "Very high health and better armor.";
 
     public Uman() {
 

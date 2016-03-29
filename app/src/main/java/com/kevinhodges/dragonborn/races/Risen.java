@@ -6,13 +6,13 @@ package com.kevinhodges.dragonborn.races;
 public class Risen extends Uman {
 
     private int health = 100;
-    private int strength = 50;
-    private int intelligence = 50;
-    private int stealth = 50;
-    private int luck = 50;
-    private int stats = 300;
-    private String trait = "No burden of stamina";
+    private int stamina = 200;
+    private int attackPower = 50;
+    private int armor = 10;
+    private int gold = 10;
 
+    private boolean massiveWeapons = false;
+    private String trait = "Very high stamina and the ability to drain life from enemies.";
 
 
     public Risen () {

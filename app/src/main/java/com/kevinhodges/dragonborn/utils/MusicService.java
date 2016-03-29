@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.kevinhodges.dragonborn.R;
 
@@ -17,6 +18,7 @@ public class MusicService extends Service {
     MediaPlayer player;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private String TAG = "isMusicPlaying";
 
     public IBinder onBind(Intent arg0) {
         return null;
@@ -38,6 +40,9 @@ public class MusicService extends Service {
         player.start();
         editor.putBoolean("isMusicPlaying", true);
         editor.commit();
+
+        Log.d(TAG, "Music has started");
+
         return 1;
     }
 

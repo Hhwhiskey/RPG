@@ -7,12 +7,12 @@ public class Loken extends Uman {
 
     private int health = 100;
     private int stamina = 100;
-    private int stength = 200;
-    private int intelligence = 10;
-    private int stealth = 20;
-    private int luck = 20;
-    private int stats = 450;
-    private String trait = "Large weapons";
+    private int attackPower = 150;
+    private int armor = 10;
+    private int gold = 10;
+
+    private boolean massiveWeapons = true;
+    private String trait = "Massive weapons and misses do not use stamina.";
 
     public Loken() {
 

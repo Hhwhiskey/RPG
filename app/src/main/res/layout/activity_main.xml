@@ -1,15 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_main"
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearLayout">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Health"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#d50000"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:layout_weight=".33"
+        android:gravity="center_horizontal"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#1565c0"
+        android:text="Stamina"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:layout_weight=".33"
+        android:gravity="center_horizontal"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Attack"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:layout_weight=".33"
+        android:gravity="center_horizontal"
+        android:typeface="serif" />
+
+</LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Armor"
+            android:id="@+id/textView4"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#757575"
+            android:textSize="24sp"
+            android:layout_marginTop="16dp"
+            android:layout_weight=".5"
+            android:gravity="center_horizontal"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Gold"
+            android:id="@+id/textView5"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#ffb74d"
+            android:textSize="24sp"
+            android:layout_marginTop="16dp"
+            android:layout_weight=".5"
+            android:gravity="center_horizontal"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <fragment android:name="com.kevinhodges.dragonborn.fragments.Chapter1"
+        android:id="@+id/fragment_chapter1"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_chapter1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp">
+
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Defend"
+            android:layout_weight=".5"
+            android:textSize="20sp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Attack"
+            android:layout_weight=".5"
+            android:textSize="20sp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp">
+
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Flee"
+            android:layout_weight=".5"
+            android:textSize="20sp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Potions"
+            android:layout_weight=".5"
+            android:textSize="20sp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 
 </RelativeLayout>
 

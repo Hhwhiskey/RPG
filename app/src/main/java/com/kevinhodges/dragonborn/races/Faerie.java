@@ -6,13 +6,13 @@ package com.kevinhodges.dragonborn.races;
 public class Faerie extends Uman {
 
     private int health = 50;
-    private int stamina = 25;
-    private int strength = 25;
-    private int intelligence = 150;
-    private int stealth = 100;
-    private int luck = 100;
-    private int stats = 450;
-    private String trait = "Flee from combat";
+    private int stamina = 100;
+    private int attackPower = 200;
+    private int armor = 10;
+    private int gold = 10;
+
+    private boolean massiveWeapons = false;
+    private String trait = "2 attacks before taking any damage and very high attack power.";
 
     public Faerie() {
 

@@ -7,12 +7,13 @@ public class Loken extends Uman {
 
     private int health = 100;
     private int stamina = 100;
-    private int attackPower = 150;
+    private int attackPower = 200;
     private int armor = 10;
     private int gold = 10;
 
     private boolean massiveWeapons = true;
-    private String trait = "Massive weapons and misses do not use stamina.";
+    private String trait = "Massive weapons and misses don't use stamina.";
+    private String special = "Whirlwind - Attacks all enemies instead of one.";
 
     public Loken() {
 

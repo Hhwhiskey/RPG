@@ -114,7 +114,6 @@
 
 
         <Button
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Defend"
@@ -122,10 +121,10 @@
             android:textSize="20sp"
             android:typeface="serif"
             android:background="#000000"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:id="@+id/button_defend" />
 
         <Button
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Attack"
@@ -133,7 +132,8 @@
             android:textSize="20sp"
             android:typeface="serif"
             android:background="#000000"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:id="@+id/button_attack" />
 
     </LinearLayout>
 
@@ -146,7 +146,6 @@
 
 
         <Button
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Flee"
@@ -154,10 +153,10 @@
             android:textSize="20sp"
             android:typeface="serif"
             android:background="#000000"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:id="@+id/button_flee" />
 
         <Button
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Potions"
@@ -165,7 +164,8 @@
             android:textSize="20sp"
             android:typeface="serif"
             android:background="#000000"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:id="@+id/button_potions" />
 
     </LinearLayout>
 

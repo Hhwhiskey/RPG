@@ -24,8 +24,7 @@ public class RaceSelectActivity extends AppCompatActivity {
     private TextView lokenTextView;
     private TextView risenTextView;
     private String raceSelection;
-    //    private boolean mBackgroundMusicBoolean;
-//    private BackgroundMusic mBackgroundMusic;
+
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Intent svc;
@@ -39,11 +38,6 @@ public class RaceSelectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_race_select);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-//        mBackgroundMusic = new BackgroundMusic();
-
-//        mBackgroundMusicBoolean = false;
-
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = sharedPreferences.edit();
@@ -64,7 +58,7 @@ public class RaceSelectActivity extends AppCompatActivity {
         risenTextView = (TextView) findViewById(R.id.tv_risen);
         ///////////////////////////////////////////////////////////////////////////
 
-        showDreamDiaglog(intro);
+        showDreamDialog(intro);
 
         umanTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +95,7 @@ public class RaceSelectActivity extends AppCompatActivity {
 
     }
 
-    public void showDreamDiaglog(String intro) {
+    public void showDreamDialog(String intro) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(RaceSelectActivity.this, R.style.MyAlertDialogStyle);
         builder.setMessage(intro);

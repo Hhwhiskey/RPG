@@ -13,6 +13,7 @@ public class Uman {
 
     private boolean massiveWeapons = false;
     private String trait = "Very high health and better armor.";
+    private String special = "Shield wall - Take no damage this turn";
 
     public Uman() {
 

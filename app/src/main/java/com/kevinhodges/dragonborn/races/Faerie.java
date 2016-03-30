@@ -12,7 +12,8 @@ public class Faerie extends Uman {
     private int gold = 10;
 
     private boolean massiveWeapons = false;
-    private String trait = "2 attacks before taking any damage and very high attack power.";
+    private String trait = "2 attacks before taking any damage and cannot be ambushed, even while resting.";
+    private String special = "Teleport - Gain distance and get 2 free attacks on same target";
 
     public Faerie() {
 

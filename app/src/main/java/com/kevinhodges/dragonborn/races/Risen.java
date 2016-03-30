@@ -12,7 +12,8 @@ public class Risen extends Uman {
     private int gold = 10;
 
     private boolean massiveWeapons = false;
-    private String trait = "Very high stamina and the ability to drain life from enemies.";
+    private String trait = "Very high stamina.";
+    private String special = "Drain life - Drain your strong attack amount from enemy and fill your health.";
 
 
     public Risen () {

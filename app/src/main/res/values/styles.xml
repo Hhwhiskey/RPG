@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -19,20 +19,16 @@
     </style>
 
 
-    <style name="MyAlertDialogStyle" parent="android:Theme.Holo.Dialog">
+    <style name="MyAlertDialogStyle" parent="@android:style/Theme.Dialog">
         <!-- Used for the buttons -->
         <item name="colorAccent">#000000</item>
         <!-- Used for the title and text -->
         <item name="android:textColorPrimary">#FFFFFF</item>
         <!-- Used for the background -->
         <item name="android:background">#000000</item>
-
         <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:textColor">#FFFFFF</item>
 
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

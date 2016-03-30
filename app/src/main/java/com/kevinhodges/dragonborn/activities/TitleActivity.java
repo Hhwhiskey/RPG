@@ -36,8 +36,6 @@ public class TitleActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        isActivityIntent = false;
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = sharedPreferences.edit();
 

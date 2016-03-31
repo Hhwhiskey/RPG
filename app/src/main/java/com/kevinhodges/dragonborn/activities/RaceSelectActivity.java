@@ -1,7 +1,7 @@
 package com.kevinhodges.dragonborn.activities;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kevinhodges.dragonborn.MainActivity;
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
@@ -63,7 +63,7 @@ public class RaceSelectActivity extends AppCompatActivity {
         umanTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showRaceInfoDialog(uman, "Uman");
+                showBetterInfoDialog(uman, "Uman");
 
             }
         });
@@ -71,7 +71,7 @@ public class RaceSelectActivity extends AppCompatActivity {
         faerieTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showRaceInfoDialog(faerie, "Faerie");
+                showBetterInfoDialog(faerie, "Faerie");
 
             }
         });
@@ -79,7 +79,7 @@ public class RaceSelectActivity extends AppCompatActivity {
         lokenTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showRaceInfoDialog(loken, "Loken");
+                showBetterInfoDialog(loken, "Loken");
 
             }
         });
@@ -87,7 +87,7 @@ public class RaceSelectActivity extends AppCompatActivity {
         risenTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showRaceInfoDialog(risen, "Risen");
+                showBetterInfoDialog(risen, "Risen");
 
             }
         });
@@ -102,22 +102,36 @@ public class RaceSelectActivity extends AppCompatActivity {
         builder.show();
     }
 
-    public void showRaceInfoDialog(final String raceDescription, final String race) {
+    public void showBetterInfoDialog(final String raceDescription, final String race) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(RaceSelectActivity.this, R.style.MyAlertDialogStyle);
-//        builder.setTitle("Is this your home?");
-        builder.setMessage(raceDescription);
+        final Dialog raceInfoDialog = new Dialog(RaceSelectActivity.this);
+        raceInfoDialog.setContentView(R.layout.dialog_2);
 
-        builder.setNegativeButton("This is not my home", new DialogInterface.OnClickListener() {
+        TextView dialogTitle = (TextView) raceInfoDialog.findViewById(R.id.dialog_2_title);
+        TextView dialogMessage = (TextView) raceInfoDialog.findViewById(R.id.dialog_2_message);
+        Button thisIsNotMyHomeButton = (Button) raceInfoDialog.findViewById(R.id.dialog_2_option_1);
+        Button thisIsyMyHomeButton = (Button) raceInfoDialog.findViewById(R.id.dialog_2_option_2);
+
+        dialogTitle.setText("Are these your people?");
+        dialogMessage.setText(raceDescription);
+        thisIsNotMyHomeButton.setText("No");
+        thisIsyMyHomeButton.setText("Yes");
+
+        raceInfoDialog.show();
+
+        thisIsNotMyHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-
+            public void onClick(View v) {
+                raceInfoDialog.dismiss();
             }
         });
 
-        builder.setPositiveButton("This is my home", new DialogInterface.OnClickListener() {
+        thisIsyMyHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v) {
+
+                raceInfoDialog.dismiss();
+
                 switch (race) {
                     case "Uman":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Urth, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
@@ -138,17 +152,13 @@ public class RaceSelectActivity extends AppCompatActivity {
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, The Urthen Crypts, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
 
                         break;
-
-
                 }
 
-                Intent MainIntent = new Intent(RaceSelectActivity.this, MainActivity.class);
+                Intent MainIntent = new Intent(RaceSelectActivity.this, CombatActivity.class);
                 startActivity(MainIntent);
                 isActivityIntent = true;
             }
         });
-
-        builder.show();
     }
 
     @Override

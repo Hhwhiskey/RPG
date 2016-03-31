@@ -7,11 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
+    tools:context=".activities.CombatActivity"
     android:background="#000000">
 
   <LinearLayout
-      android:layout_width="wrap_content"
+      android:layout_width="300dp"
       android:layout_height="wrap_content"
       android:id="@+id/AttackOptionsLinearLayout"
       android:background="@color/colorPrimary"
@@ -86,7 +86,7 @@
             android:layout_alignParentStart="true"
             android:layout_weight="1"
             android:text="Weak"
-            android:textSize="8dp" />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/dialog_button_medium_attack"
@@ -97,7 +97,7 @@
             android:layout_toStartOf="@+id/dialog_button_strong_attack"
             android:layout_weight="1"
             android:text="Medium"
-            android:textSize="8dp" />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/dialog_button_strong_attack"
@@ -107,6 +107,6 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:text="Strong"
-            android:textSize="8dp" />
+            android:textSize="12dp" />
     </LinearLayout>
 </RelativeLayout>

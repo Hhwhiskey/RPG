@@ -1,4 +1,4 @@
-package com.kevinhodges.dragonborn;
+package com.kevinhodges.dragonborn.activities;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -15,10 +15,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.kevinhodges.dragonborn.activities.TitleActivity;
+import com.kevinhodges.dragonborn.R;
+import com.kevinhodges.dragonborn.TitleActivity;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
-public class MainActivity extends AppCompatActivity {
+public class CombatActivity extends AppCompatActivity {
 
     private static final String TAG = "Music";
     private SharedPreferences sharedPreferences;
@@ -28,18 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private boolean isActivityIntent;
     AlertDialog.Builder builder;
     private Button attackButton;
-    private Button defendButton;
+    private Button heroicButton;
     private Button potionsButton;
     private Button fleeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_combat);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-//        builder = new AlertDialog.Builder(MainActivity.this, R.style.MyAlertDialogStyle);
+//        builder = new AlertDialog.Builder(CombatActivity.this, R.style.MyAlertDialogStyle);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = sharedPreferences.edit();
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         //UI Declarations///////////////////////////////////////////////////////////
         attackButton = (Button) findViewById(R.id.button_attack);
-        defendButton = (Button) findViewById(R.id.button_defend);
+        heroicButton = (Button) findViewById(R.id.button_heroic);
         potionsButton = (Button) findViewById(R.id.button_potions);
         fleeButton = (Button) findViewById(R.id.button_flee);
         ///////////////////////////////////////////////////////////////////////////
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final Dialog attackDialog = new Dialog(MainActivity.this);
+                final Dialog attackDialog = new Dialog(CombatActivity.this);
                 attackDialog.setContentView(R.layout.dialog_attack);
 
                 Button weakAttackButton = (Button) attackDialog.findViewById(R.id.dialog_button_weak_attack);
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 weakAttackButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "Weak attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CombatActivity.this, "Weak attack", Toast.LENGTH_SHORT).show();
                         attackDialog.dismiss();
                     }
                 });
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 mediumAttackButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "Medium attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CombatActivity.this, "Medium attack", Toast.LENGTH_SHORT).show();
                         attackDialog.dismiss();
                     }
                 });
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 strongAttackButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "Strong attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CombatActivity.this, "Strong attack", Toast.LENGTH_SHORT).show();
                         attackDialog.dismiss();
                     }
                 });
@@ -98,21 +99,21 @@ public class MainActivity extends AppCompatActivity {
                 builder.setNeutralButton("Weak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "Weak attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CombatActivity.this, "Weak attack", Toast.LENGTH_SHORT).show();
                     }
                 });
 
                 builder.setNegativeButton("Medium", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "Medium attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CombatActivity.this, "Medium attack", Toast.LENGTH_SHORT).show();
                     }
                 });
 
                 builder.setPositiveButton("Strong", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "Strong attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CombatActivity.this, "Strong attack", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        defendButton.setOnClickListener(new View.OnClickListener() {
+        heroicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed();
         isActivityIntent = true;
 
-        Intent titleActivityIntent = new Intent(MainActivity.this, TitleActivity.class);
+        Intent titleActivityIntent = new Intent(CombatActivity.this, TitleActivity.class);
         startActivity(titleActivityIntent);
     }
 

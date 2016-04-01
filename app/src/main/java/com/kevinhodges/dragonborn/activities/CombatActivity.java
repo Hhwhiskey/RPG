@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.TitleActivity;
 import com.kevinhodges.dragonborn.objects.Enemy;
+import com.kevinhodges.dragonborn.objects.Player;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
 public class CombatActivity extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class CombatActivity extends AppCompatActivity {
     private Button potionsButton;
     private Button fleeButton;
     private static int enemyCount;
+    public Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,5 +188,8 @@ public class CombatActivity extends AppCompatActivity {
         startActivity(titleActivityIntent);
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
 }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
+import com.kevinhodges.dragonborn.objects.Player;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
 public class RaceSelectActivity extends AppCompatActivity {
@@ -31,6 +32,7 @@ public class RaceSelectActivity extends AppCompatActivity {
     private boolean isMusicPlaying;
     private boolean isActivityIntent;
     private static final String TAG = "Music";
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class RaceSelectActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////////////////////
 
         showDreamDialog(intro);
+
+        player = new Player();
 
         umanTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,22 +139,22 @@ public class RaceSelectActivity extends AppCompatActivity {
                 switch (race) {
                     case "Uman":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Urth, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-
+                        player.createNewPlayerWithRace("Uman");
                         break;
 
                     case "Faerie":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Talion, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-
+                        player.createNewPlayerWithRace("Faerie");
                         break;
 
                     case "Loken":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Duunbar, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-
+                        player.createNewPlayerWithRace("Loken");
                         break;
 
                     case "Risen":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, The Urthen Crypts, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-
+                        player.createNewPlayerWithRace("Risen");
                         break;
                 }
 

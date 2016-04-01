@@ -13,7 +13,7 @@ public class Faerie extends Uman {
 
     private boolean massiveWeapons = false;
     private String trait = "2 attacks before taking any damage and cannot be damaged from an ambush, even while resting.";
-    private String special = "Teleport - Instead of attacking, take no damage the next turn, and get 2 more attacks on the target";
+    private String special = "Teleport - Instead of attacking this turn, dodge the enemies attack, and you get 3 attacks next turn";
 
     public Faerie() {
 

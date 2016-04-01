@@ -17,11 +17,12 @@ import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.TitleActivity;
+import com.kevinhodges.dragonborn.objects.Enemy;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
 public class CombatActivity extends AppCompatActivity {
 
-    private static final String TAG = "Music";
+    private static final String TAG = "CombatActivity";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Intent svc;
@@ -32,6 +33,7 @@ public class CombatActivity extends AppCompatActivity {
     private Button heroicButton;
     private Button potionsButton;
     private Button fleeButton;
+    private static int enemyCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +41,6 @@ public class CombatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_combat);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-//        builder = new AlertDialog.Builder(CombatActivity.this, R.style.MyAlertDialogStyle);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         editor = sharedPreferences.edit();
@@ -53,8 +53,6 @@ public class CombatActivity extends AppCompatActivity {
         potionsButton = (Button) findViewById(R.id.button_potions);
         fleeButton = (Button) findViewById(R.id.button_flee);
         ///////////////////////////////////////////////////////////////////////////
-
-
 
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,32 +90,6 @@ public class CombatActivity extends AppCompatActivity {
                 });
 
                 attackDialog.show();
-
-               /* builder.setTitle("Choose your Attack");
-                builder.setMessage("Weak: 3 stamina \n Medium: 6 stamina \n Strong: 12 stamina");
-
-                builder.setNeutralButton("Weak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(CombatActivity.this, "Weak attack", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                builder.setNegativeButton("Medium", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(CombatActivity.this, "Medium attack", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                builder.setPositiveButton("Strong", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(CombatActivity.this, "Strong attack", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                builder.show();*/
             }
         });
 
@@ -141,7 +113,21 @@ public class CombatActivity extends AppCompatActivity {
 
             }
         });
+
+        Enemy enemy = new Enemy(25, 50);
+        String enemyRace = enemy.getRandomRace();
+        int enemyHealth = enemy.getRandomHealth();
+        int enemyStamina = enemy.getRandomStamina();
+        int enemyArmor = enemy.getRandomArmor();
+        int enemyDamage = enemy.getDamage();
+
+        Log.d(TAG, enemyRace + " Health: " + enemyHealth);
+        Log.d(TAG, enemyRace + " Stamina: " + enemyStamina);
+        Log.d(TAG, enemyRace + " Armor: " + enemyArmor);
+        Log.d(TAG, enemyRace + " Damage: " + enemyDamage);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -169,7 +155,7 @@ public class CombatActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Log.d(TAG, "isMusicPlaying = " + isMusicPlaying);
+//        Log.d(TAG, "isMusicPlaying = " + isMusicPlaying);
 
         isActivityIntent = false;
 

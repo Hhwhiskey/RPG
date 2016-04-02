@@ -5,6 +5,8 @@ import com.kevinhodges.dragonborn.races.Loken;
 import com.kevinhodges.dragonborn.races.Risen;
 import com.kevinhodges.dragonborn.races.Uman;
 
+import java.util.ArrayList;
+
 /**
  * Created by Kevin on 4/1/2016.
  */
@@ -21,11 +23,16 @@ public class Player {
     private int daysLeft;
     private int leaguesLeft;
     private String weaponType;
-    private Uman player;
+    private Player player;
+
 
     public Player() {
 
     }
+
+
+
+
 
    /* public Player(String race, int health, int stamina, int attackPower, int weaponDamage, int armor, int daysLeft, int leaguesLeft, String currentWeapon) {
         this.race = race;
@@ -42,16 +49,16 @@ public class Player {
     public Player createNewPlayerWithRace(String newPlayerRace) {
 
         if (newPlayerRace.equals("Uman")) {
-            Player player = new Uman();
+             player = new Uman();
 
         } else if (newPlayerRace.equals("Faerie")) {
-            Player player = new Faerie();
+             player = new Faerie();
 
         } else if (newPlayerRace.equals("Loken")) {
-            Player player = new Loken();
+             player = new Loken();
 
         } else if (newPlayerRace.equals("Risen")) {
-            Player player = new Risen();
+             player = new Risen();
         }
 
         uniquePlayerNumber++;
@@ -69,6 +76,9 @@ public class Player {
         weaponType = player.getWeaponType();*/
 
         //Increment the uniquePlayerId once player is created
+
+    }
+    public void heroic() {
 
     }
 
@@ -95,10 +105,34 @@ public class Player {
         return (attackPower / 10) * weaponDamage;
     }
 
-    public void buyArmor(int cost, int armorGained) {
+    public void usePotion() {
 
+    }
+
+    //Weapons///////////////////////////////////////////////////////////////////////
+    public ArrayList<String> getBlackSmithWeaponList() {
+        return null;
+    }
+
+    public Weapon buyWeapon(Weapon weapon) {
+        return null;
+    }
+
+    public Weapon equipWeapon(Weapon weapon) {
+        return null;
+    }
+
+
+
+    //Armor////////////////////////////////////////////////////////////////////////////////
+    public Armor[] getBlackSmithArmorList() {
+        return null;
+    }
+
+    // Armor is auto equipped
+    public void buyArmor(int cost, int armorAmount) {
         gold -= cost;
-        armor += armorGained;
+        armor += armorAmount;
     }
 
 

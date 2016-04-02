@@ -16,15 +16,15 @@ public class Enemy {
     private final int armor;
 
     public Enemy(int damageMin, int damageMax) {
-        this.race = getRandomRace();
-        this.health = getRandomHealth();
-        this.stamina = getRandomStamina();
-        this.armor = getRandomArmor();
+        this.race = generateRandomRace();
+        this.health = generateRandomHealth();
+        this.stamina = generateRandomStamina();
+        this.armor = generateRandomArmor();
         this.damageMin = damageMin;
         this.damageMax = damageMax;
     }
 
-    public String getRandomRace() {
+    public String generateRandomRace() {
 
         Random random = new Random();
         int randomRange = random.nextInt(12);
@@ -32,28 +32,28 @@ public class Enemy {
         return randomRaceArray[randomRange];
     }
 
-    public int getRandomHealth() {
+    public int generateRandomHealth() {
 
         Random random = new Random();
 
         return random.nextInt(100 - 50) + 50;
     }
 
-    public int getRandomStamina() {
+    public int generateRandomStamina() {
 
         Random random = new Random();
 
         return random.nextInt(100 - 50) + 50;
     }
 
-    public int getRandomArmor() {
+    public int generateRandomArmor() {
 
         Random random = new Random();
 
         return random.nextInt(50 - 10) + 10;
     }
 
-    public int getDamage() {
+    public int generateEnemyDamage() {
 
         Random random = new Random();
 

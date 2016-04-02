@@ -1,7 +1,5 @@
 package com.kevinhodges.dragonborn.objects;
 
-import com.kevinhodges.dragonborn.activities.CampActivity;
-
 import java.util.Random;
 
 /**
@@ -9,42 +7,37 @@ import java.util.Random;
  */
 public class Weapon {
 
-    private String weaponType;
-    private final String[] umanRisenWeaponsArray = {"Dagger, 1-handed Sword, 2-handed Sword, 1-handed Axe, 2-handed Axe"};
-    private final String[] lokenWeaponsArray = {"War Axe, War hammer, War Mace, Scythe, Polearm"};
-    private final String[] faerieWeaponsArray = {"Staff, Wand, Scepter, Orb, Spellbook"};
-    private final int weaponDamage;
-    private final int weaponCost;
-    private Player player;
-    String playerRace = player.getRace();
+    public String weaponType;
+    private final String[] umanRisenWeaponsArray = {"Dagger", "1-handed Sword", "2-handed Sword", "1-handed Axe", "2-handed Axe"};
+    private final String[] lokenWeaponsArray = {"War Axe", "War hammer", "War Mace", "Scythe", "Polearm"};
+    private final String[] faerieWeaponsArray = {"Staff", "Wand", "Scepter", "Orb", "Spellbook"};
+    public final int weaponDamage;
+    public final int weaponCost;
 
 
-    public Weapon() {
-
-        CampActivity campActivity = new CampActivity();
-        Player player = campActivity.getPlayer();
-        playerRace = player.getRace();
+    public Weapon(String playerRace, int weaponMultiplier) {
 
         switch (playerRace) {
             case "Uman":
             case "Risen":
-                this.weaponType = getRandomUmanRisenWeaponType();
+                this.weaponType = generateRandomUmanRisenWeaponType();
                 break;
 
             case "Loken":
-                this.weaponType = getRandomLokenWeaponType();
+                this.weaponType = generateRandomLokenWeaponType();
                 break;
 
             case "Faerie":
-                this.weaponType = getRandomFaerieWeaponType();
+                this.weaponType = generateRandomFaerieWeaponType();
                 break;
         }
 
-        this.weaponDamage = getRandomWeaponDamage();
+        this.weaponDamage = getRandomWeaponDamage(weaponMultiplier);
         this.weaponCost = getWeaponCost();
     }
 
-    public String getRandomUmanRisenWeaponType() {
+
+    public String generateRandomUmanRisenWeaponType() {
 
         Random random = new Random();
         int randomRange = random.nextInt(4);
@@ -52,7 +45,8 @@ public class Weapon {
         return umanRisenWeaponsArray[randomRange];
     }
 
-    public String getRandomLokenWeaponType() {
+    // Generate a random Loken weapon
+    public String generateRandomLokenWeaponType() {
 
         Random random = new Random();
         int randomRange = random.nextInt(4);
@@ -60,7 +54,8 @@ public class Weapon {
         return lokenWeaponsArray[randomRange];
     }
 
-    public String getRandomFaerieWeaponType() {
+    // Generate a random Faerie weapon
+    public String generateRandomFaerieWeaponType() {
 
         Random random = new Random();
         int randomRange = random.nextInt(4);
@@ -68,15 +63,16 @@ public class Weapon {
         return faerieWeaponsArray[randomRange];
     }
 
-    public int getRandomWeaponDamage() {
+    // Create a random weapon, then modify it with the players progress so it's just right.
+    public int getRandomWeaponDamage(int weaponMultiplier) {
 
         Random random = new Random();
 
-        return random.nextInt((100 - 1) + 1) * (10000 - player.getLeaguesLeft());
+        return random.nextInt(100) * weaponMultiplier;
     }
 
     public int getWeaponCost() {
 
-        return weaponDamage * 100;
+        return weaponDamage * 5;
     }
 }

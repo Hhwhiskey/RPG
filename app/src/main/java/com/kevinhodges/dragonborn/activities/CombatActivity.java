@@ -117,11 +117,11 @@ public class CombatActivity extends AppCompatActivity {
         });
 
         Enemy enemy = new Enemy(25, 50);
-        String enemyRace = enemy.getRandomRace();
-        int enemyHealth = enemy.getRandomHealth();
-        int enemyStamina = enemy.getRandomStamina();
-        int enemyArmor = enemy.getRandomArmor();
-        int enemyDamage = enemy.getDamage();
+        String enemyRace = enemy.generateRandomRace();
+        int enemyHealth = enemy.generateRandomHealth();
+        int enemyStamina = enemy.generateRandomStamina();
+        int enemyArmor = enemy.generateRandomArmor();
+        int enemyDamage = enemy.generateEnemyDamage();
 
         Log.d(TAG, enemyRace + " Health: " + enemyHealth);
         Log.d(TAG, enemyRace + " Stamina: " + enemyStamina);

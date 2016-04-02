@@ -16,7 +16,10 @@ import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.objects.Player;
+import com.kevinhodges.dragonborn.races.Uman;
 import com.kevinhodges.dragonborn.utils.MusicService;
+
+import java.util.ArrayList;
 
 public class RaceSelectActivity extends AppCompatActivity {
 
@@ -25,14 +28,13 @@ public class RaceSelectActivity extends AppCompatActivity {
     private TextView lokenTextView;
     private TextView risenTextView;
     private String raceSelection;
-
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Intent svc;
     private boolean isMusicPlaying;
     private boolean isActivityIntent;
-    private static final String TAG = "Music";
-    private Player player;
+    private static final String TAG = "RaceSelectActivity";
+    public Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +63,6 @@ public class RaceSelectActivity extends AppCompatActivity {
         ///////////////////////////////////////////////////////////////////////////
 
         showDreamDialog(intro);
-
-        player = new Player();
 
         umanTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,27 +139,44 @@ public class RaceSelectActivity extends AppCompatActivity {
                 switch (race) {
                     case "Uman":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Urth, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-                        player.createNewPlayerWithRace("Uman");
+//                        player.createNewPlayerWithRace("Uman");
+//                        player = new Player("Uman");
+
+                        player = new Uman();
+
+                        String playerRace = player.getRace();
+                        int playerHealth = player.getHealth();
+                        String playerWeaponType = player.getWeaponType();
+                        ArrayList<String> weaponList = player.getBlackSmithWeaponList();
+
+                        Log.d(TAG, "race = " + playerRace);
+                        Log.d(TAG, "health = " + playerHealth);
+                        Log.d(TAG, "weaponType = " + playerWeaponType);
+                        Log.d(TAG, "weaponList = " + weaponList);
+
                         break;
 
                     case "Faerie":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Talion, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-                        player.createNewPlayerWithRace("Faerie");
+//                        player.createNewPlayerWithRace("Faerie");
+//                        player = new Faerie();
                         break;
 
                     case "Loken":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Duunbar, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-                        player.createNewPlayerWithRace("Loken");
+//                        player.createNewPlayerWithRace("Loken");
+//                        player = new Loken();
                         break;
 
                     case "Risen":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, The Urthen Crypts, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-                        player.createNewPlayerWithRace("Risen");
+//                        player.createNewPlayerWithRace("Risen");
+//                        player = new Risen();
                         break;
                 }
 
-                Intent MainIntent = new Intent(RaceSelectActivity.this, CombatActivity.class);
-                startActivity(MainIntent);
+                Intent CampIntent = new Intent(RaceSelectActivity.this, InfoActivity.class);
+                startActivity(CampIntent);
                 isActivityIntent = true;
             }
         });

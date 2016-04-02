@@ -19,8 +19,6 @@ import com.kevinhodges.dragonborn.objects.Player;
 import com.kevinhodges.dragonborn.races.Uman;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
-import java.util.ArrayList;
-
 public class RaceSelectActivity extends AppCompatActivity {
 
     private TextView umanTextView;
@@ -35,6 +33,15 @@ public class RaceSelectActivity extends AppCompatActivity {
     private boolean isActivityIntent;
     private static final String TAG = "RaceSelectActivity";
     public Player player;
+    private int playerHealth;
+    private int playerStamina;
+    private int playerAttackPower;
+    private String playerWeaponType;
+    private int playerWeaponDamage;
+    private int playerArmor;
+    private int playerGold;
+    private int playerDaysLeft;
+    private int playerLeaguesLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,14 +152,32 @@ public class RaceSelectActivity extends AppCompatActivity {
                         player = new Uman();
 
                         String playerRace = player.getRace();
-                        int playerHealth = player.getHealth();
-                        String playerWeaponType = player.getWeaponType();
-                        ArrayList<String> weaponList = player.getBlackSmithWeaponList();
+                        playerWeaponType = player.getWeaponType();
+                        playerHealth = player.getHealth();
+                        playerStamina = player.getStamina();
+                        playerAttackPower = player.getAttackPower();
+                        playerWeaponDamage = player.getWeaponDamage();
+                        playerArmor = player.getArmor();
+                        playerGold = player.getGold();
+                        playerDaysLeft = player.getDaysLeft();
+                        playerLeaguesLeft = player.getLeaguesLeft();
+
+
+//                        ArrayList<String> weaponList = player.getBlackSmithWeaponList();
+
 
                         Log.d(TAG, "race = " + playerRace);
-                        Log.d(TAG, "health = " + playerHealth);
                         Log.d(TAG, "weaponType = " + playerWeaponType);
-                        Log.d(TAG, "weaponList = " + weaponList);
+                        Log.d(TAG, "health = " + playerHealth);
+                        Log.d(TAG, "stamina = " + playerStamina);
+                        Log.d(TAG, "attackPower = " + playerAttackPower);
+                        Log.d(TAG, "weaponDamage = " + playerWeaponDamage);
+                        Log.d(TAG, "armor = " + playerArmor);
+                        Log.d(TAG, "gold = " + playerGold);
+                        Log.d(TAG, "daysLeft = " + playerDaysLeft);
+                        Log.d(TAG, "leaguesLeft = " + playerLeaguesLeft);
+
+//                        Log.d(TAG, "weaponList = " + weaponList);
 
                         break;
 
@@ -175,8 +200,19 @@ public class RaceSelectActivity extends AppCompatActivity {
                         break;
                 }
 
-                Intent CampIntent = new Intent(RaceSelectActivity.this, InfoActivity.class);
-                startActivity(CampIntent);
+                Intent intent = new Intent(RaceSelectActivity.this, InfoActivity.class);
+                intent.putExtra("race", race);
+                intent.putExtra("weaponType", playerWeaponType);
+                intent.putExtra("health", playerHealth);
+                intent.putExtra("stamina", playerStamina);
+                intent.putExtra("attackPower", playerAttackPower);
+                intent.putExtra("weaponDamage", playerWeaponDamage);
+                intent.putExtra("armor", playerArmor);
+                intent.putExtra("gold", playerGold);
+                intent.putExtra("daysLeft", playerDaysLeft);
+                intent.putExtra("leaguesLeft", playerLeaguesLeft);
+                startActivity(intent);
+
                 isActivityIntent = true;
             }
         });

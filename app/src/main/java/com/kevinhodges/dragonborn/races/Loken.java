@@ -23,4 +23,9 @@ public class Loken extends Player {
     public Loken() {
 
     }
+
+    @Override
+    public void heroic() {
+
+    }
 }

@@ -23,4 +23,9 @@ public class Faerie extends Player {
     public Faerie() {
 
     }
+
+    @Override
+    public void heroic() {
+
+    }
 }

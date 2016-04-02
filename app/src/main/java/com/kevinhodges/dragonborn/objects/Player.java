@@ -1,18 +1,16 @@
 package com.kevinhodges.dragonborn.objects;
 
-import com.kevinhodges.dragonborn.races.Faerie;
-import com.kevinhodges.dragonborn.races.Loken;
-import com.kevinhodges.dragonborn.races.Risen;
-import com.kevinhodges.dragonborn.races.Uman;
+import com.kevinhodges.dragonborn.activities.RaceSelectActivity;
 
 import java.util.ArrayList;
 
 /**
  * Created by Kevin on 4/1/2016.
  */
-public class Player {
+public abstract class Player {
 
-    private static int uniquePlayerNumber = 0;
+    RaceSelectActivity raceSelectActivity = new RaceSelectActivity();
+
     private String race;
     private int health;
     private int stamina;
@@ -24,11 +22,23 @@ public class Player {
     private int leaguesLeft;
     private String weaponType;
     private Player player;
+    private static int uniquePlayerNumber = 0;
 
 
-    public Player() {
 
-    }
+    /*public Player() {
+
+        race = raceSelectActivity.player.getRace();
+        health = raceSelectActivity.player.getHealth();
+        stamina = raceSelectActivity.player.getStamina();
+        attackPower = raceSelectActivity.player.getAttackPower();
+        weaponDamage = raceSelectActivity.player.getWeaponDamage();
+        armor = raceSelectActivity.player.getArmor();
+        gold = raceSelectActivity.player.getGold();
+        daysLeft = raceSelectActivity.player.getDaysLeft();
+        leaguesLeft = raceSelectActivity.player.getLeaguesLeft();
+        weaponType = raceSelectActivity.player.getWeaponType();
+    }*/
 
 
 
@@ -46,7 +56,7 @@ public class Player {
         this.currentWeapon = currentWeapon;
     }*/
 
-    public Player createNewPlayerWithRace(String newPlayerRace) {
+    /*public Player createNewPlayerWithRace(String newPlayerRace) {
 
         if (newPlayerRace.equals("Uman")) {
              player = new Uman();
@@ -64,7 +74,7 @@ public class Player {
         uniquePlayerNumber++;
         return player;
 
-       /* race = player.getRace();
+       *//* race = player.getRace();
         health = player.getHealth();
         stamina = player.getStamina();
         attackPower = player.getAttackPower();
@@ -73,14 +83,14 @@ public class Player {
         gold = player.getGold();
         daysLeft = player.getDaysLeft();
         leaguesLeft = player.getLeaguesLeft();
-        weaponType = player.getWeaponType();*/
+        weaponType = player.getWeaponType();*//*
 
         //Increment the uniquePlayerId once player is created
 
-    }
-    public void heroic() {
+    }*/
 
-    }
+    public abstract void heroic();
+
 
     public int weakAttack() {
 
@@ -111,11 +121,34 @@ public class Player {
 
     //Weapons///////////////////////////////////////////////////////////////////////
     public ArrayList<String> getBlackSmithWeaponList() {
+/*
+        int weaponMultiplier = ((10000 - leaguesLeft) / 100) + 1;
+
+        Weapon weapon1 = new Weapon(race, weaponMultiplier);
+        Weapon weapon2 = new Weapon(race, weaponMultiplier);
+        Weapon weapon3 = new Weapon(race, weaponMultiplier);
+        Weapon weapon4 = new Weapon(race, weaponMultiplier);
+        Weapon weapon5 = new Weapon(race, weaponMultiplier);
+
+        Weapon[] weaponObjectsArray = {weapon1, weapon2, weapon3, weapon4, weapon5};
+        ArrayList<String> weaponDetailsList = new ArrayList<>();
+
+        for (Weapon weapon : weaponObjectsArray) {
+            String weaponType = weapon.weaponType;
+            String weaponDamage = String.valueOf(weapon.weaponDamage);
+            String weaponCost = String.valueOf(weapon.weaponCost);
+
+            weaponDetailsList.add(weaponType);
+            weaponDetailsList.add(weaponDamage);
+            weaponDetailsList.add(weaponCost);
+        }*/
+
         return null;
     }
 
+    // TODO: 4/1/2016  Pass WeaponObject that is clicked to the buy dialog then add it to inventory
     public Weapon buyWeapon(Weapon weapon) {
-        return null;
+      return null;
     }
 
     public Weapon equipWeapon(Weapon weapon) {
@@ -177,5 +210,4 @@ public class Player {
     public String getWeaponType() {
         return weaponType;
     }
-
 }

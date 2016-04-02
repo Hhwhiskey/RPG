@@ -29,6 +29,11 @@ public class Uman extends Player {
 
     }
 
+    public void heroic() {
+
+    }
+
+
     @Override
     public int weakAttack() {
         super.weakAttack();
@@ -57,13 +62,6 @@ public class Uman extends Player {
 
         return (attackPower / 10) * weaponDamage;
     }
-
-    @Override
-    public void heroic() {
-        super.heroic();
-        invincible = true;
-    }
-
 
     //Weapons////////////////////////////////////////////////////////////////////////////////
     @Override

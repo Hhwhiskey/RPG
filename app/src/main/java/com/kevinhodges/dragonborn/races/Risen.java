@@ -26,6 +26,11 @@ public class Risen extends Player {
     }
 
     @Override
+    public void heroic() {
+
+    }
+
+    @Override
     public void buyArmor(int cost, int armorGained) {
         super.buyArmor(cost, armorGained);
 

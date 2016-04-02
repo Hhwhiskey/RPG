@@ -1,5 +1,6 @@
 package com.kevinhodges.dragonborn.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,13 +24,37 @@ public class CampActivity extends AppCompatActivity {
     private int daysLeft;
     private int leaguesLeft;
     private String weaponType;
+    private String playerRace;
+    private String playerWeaponType;
+    private int playerHealth;
+    private int playerStamina;
+    private int playerAttackPower;
+    private int playerWeaponDamage;
+    private int playerArmor;
+    private int playerGold;
+    private int playerDaysLeft;
+    private int playerLeaguesLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camp);
 
-        RaceSelectActivity raceSelectActivity = new RaceSelectActivity();
+        Intent intent = getIntent();
+        playerRace = intent.getStringExtra("race");
+        playerWeaponType = intent.getStringExtra("weaponType");
+        playerHealth = intent.getIntExtra("health", 0);
+        playerStamina = intent.getIntExtra("stamina", 0);
+        playerAttackPower = intent.getIntExtra("attackPower", 0);
+        playerWeaponDamage = intent.getIntExtra("weaponDamage", 0);
+        playerArmor = intent.getIntExtra("armor", 0);
+        playerGold = intent.getIntExtra("gold", 0);
+        playerDaysLeft = intent.getIntExtra("daysLeft", 0);
+        playerLeaguesLeft = intent.getIntExtra("leaguesLeft", 0);
+
+
+
+       /* RaceSelectActivity raceSelectActivity = new RaceSelectActivity();
         race = raceSelectActivity.player.getRace();
         health = raceSelectActivity.player.getHealth();
         stamina = raceSelectActivity.player.getStamina();
@@ -39,11 +64,12 @@ public class CampActivity extends AppCompatActivity {
         gold = raceSelectActivity.player.getGold();
         daysLeft = raceSelectActivity.player.getDaysLeft();
         leaguesLeft = raceSelectActivity.player.getLeaguesLeft();
-        weaponType = raceSelectActivity.player.getWeaponType();
+        weaponType = raceSelectActivity.player.getWeaponType();*/
 
-        Log.d(TAG, "race = " + race);
-        Log.d(TAG, "health = " + health);
-        Log.d(TAG, "weaponType = " + weaponType);
+        Log.d(TAG, "race = " + playerRace);
+        Log.d(TAG, "health = " + playerHealth);
+        Log.d(TAG, "weaponType = " + playerWeaponType);
+
 
     }
 

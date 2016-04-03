@@ -16,8 +16,13 @@ import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.objects.Player;
+import com.kevinhodges.dragonborn.races.Faerie;
+import com.kevinhodges.dragonborn.races.Loken;
+import com.kevinhodges.dragonborn.races.Risen;
 import com.kevinhodges.dragonborn.races.Uman;
 import com.kevinhodges.dragonborn.utils.MusicService;
+
+import java.util.ArrayList;
 
 public class RaceSelectActivity extends AppCompatActivity {
 
@@ -32,7 +37,7 @@ public class RaceSelectActivity extends AppCompatActivity {
     private boolean isMusicPlaying;
     private boolean isActivityIntent;
     private static final String TAG = "RaceSelectActivity";
-    public Player player;
+    //public Player player;
     private int playerHealth;
     private int playerStamina;
     private int playerAttackPower;
@@ -42,6 +47,11 @@ public class RaceSelectActivity extends AppCompatActivity {
     private int playerGold;
     private int playerDaysLeft;
     private int playerLeaguesLeft;
+    private Player player;
+    private String playerRace;
+    private ArrayList<String> blacksmithWeaponList;
+    private ArrayList<Integer> blacksmithArmorList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,12 +156,12 @@ public class RaceSelectActivity extends AppCompatActivity {
                 switch (race) {
                     case "Uman":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Urth, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-//                        player.createNewPlayerWithRace("Uman");
-//                        player = new Player("Uman");
 
                         player = new Uman();
 
-                        String playerRace = player.getRace();
+                        player.generateBlacksmithWeaponList(player.getRace(), player.getLeaguesLeft());
+
+                        playerRace = player.getRace();
                         playerWeaponType = player.getWeaponType();
                         playerHealth = player.getHealth();
                         playerStamina = player.getStamina();
@@ -161,10 +171,8 @@ public class RaceSelectActivity extends AppCompatActivity {
                         playerGold = player.getGold();
                         playerDaysLeft = player.getDaysLeft();
                         playerLeaguesLeft = player.getLeaguesLeft();
-
-
-//                        ArrayList<String> weaponList = player.getBlackSmithWeaponList();
-
+                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
+                        blacksmithArmorList = player.generateBlackSmithArmorList(true, playerLeaguesLeft);
 
                         Log.d(TAG, "race = " + playerRace);
                         Log.d(TAG, "weaponType = " + playerWeaponType);
@@ -176,32 +184,73 @@ public class RaceSelectActivity extends AppCompatActivity {
                         Log.d(TAG, "gold = " + playerGold);
                         Log.d(TAG, "daysLeft = " + playerDaysLeft);
                         Log.d(TAG, "leaguesLeft = " + playerLeaguesLeft);
+                        Log.d(TAG, "weaponList = " + blacksmithWeaponList);
+                        Log.d(TAG, "armorList = " + blacksmithArmorList);
 
-//                        Log.d(TAG, "weaponList = " + weaponList);
 
                         break;
 
                     case "Faerie":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Talion, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-//                        player.createNewPlayerWithRace("Faerie");
-//                        player = new Faerie();
+                        player = new Faerie();
+
+                        playerRace = player.getRace();
+                        playerWeaponType = player.getWeaponType();
+                        playerHealth = player.getHealth();
+                        playerStamina = player.getStamina();
+                        playerAttackPower = player.getAttackPower();
+                        playerWeaponDamage = player.getWeaponDamage();
+                        playerArmor = player.getArmor();
+                        playerGold = player.getGold();
+                        playerDaysLeft = player.getDaysLeft();
+                        playerLeaguesLeft = player.getLeaguesLeft();
+                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
+                        blacksmithArmorList = player.generateBlackSmithArmorList(false, playerLeaguesLeft);
+
+                        Log.d(TAG, "Faerie armor list: " + blacksmithArmorList);
+
+
                         break;
 
                     case "Loken":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Duunbar, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-//                        player.createNewPlayerWithRace("Loken");
-//                        player = new Loken();
+                        player = new Loken();
+
+                        playerRace = player.getRace();
+                        playerWeaponType = player.getWeaponType();
+                        playerHealth = player.getHealth();
+                        playerStamina = player.getStamina();
+                        playerAttackPower = player.getAttackPower();
+                        playerWeaponDamage = player.getWeaponDamage();
+                        playerArmor = player.getArmor();
+                        playerGold = player.getGold();
+                        playerDaysLeft = player.getDaysLeft();
+                        playerLeaguesLeft = player.getLeaguesLeft();
+                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
+
                         break;
 
                     case "Risen":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, The Urthen Crypts, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-//                        player.createNewPlayerWithRace("Risen");
-//                        player = new Risen();
+                        player = new Risen();
+
+                        playerRace = player.getRace();
+                        playerWeaponType = player.getWeaponType();
+                        playerHealth = player.getHealth();
+                        playerStamina = player.getStamina();
+                        playerAttackPower = player.getAttackPower();
+                        playerWeaponDamage = player.getWeaponDamage();
+                        playerArmor = player.getArmor();
+                        playerGold = player.getGold();
+                        playerDaysLeft = player.getDaysLeft();
+                        playerLeaguesLeft = player.getLeaguesLeft();
+                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
+
                         break;
                 }
 
                 Intent intent = new Intent(RaceSelectActivity.this, InfoActivity.class);
-                intent.putExtra("race", race);
+                /*intent.putExtra("race", race);
                 intent.putExtra("weaponType", playerWeaponType);
                 intent.putExtra("health", playerHealth);
                 intent.putExtra("stamina", playerStamina);
@@ -210,7 +259,9 @@ public class RaceSelectActivity extends AppCompatActivity {
                 intent.putExtra("armor", playerArmor);
                 intent.putExtra("gold", playerGold);
                 intent.putExtra("daysLeft", playerDaysLeft);
-                intent.putExtra("leaguesLeft", playerLeaguesLeft);
+                intent.putExtra("leaguesLeft", playerLeaguesLeft);*/
+
+                intent.putExtra("playerObject", player);
                 startActivity(intent);
 
                 isActivityIntent = true;

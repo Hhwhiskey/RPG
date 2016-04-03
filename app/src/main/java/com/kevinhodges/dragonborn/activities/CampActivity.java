@@ -41,7 +41,9 @@ public class CampActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camp);
 
         Intent intent = getIntent();
-        playerRace = intent.getStringExtra("race");
+        player = intent.getParcelableExtra("playerObject");
+
+        /*layerRace = intent.getStringExtra("race");
         playerWeaponType = intent.getStringExtra("weaponType");
         playerHealth = intent.getIntExtra("health", 0);
         playerStamina = intent.getIntExtra("stamina", 0);
@@ -50,13 +52,15 @@ public class CampActivity extends AppCompatActivity {
         playerArmor = intent.getIntExtra("armor", 0);
         playerGold = intent.getIntExtra("gold", 0);
         playerDaysLeft = intent.getIntExtra("daysLeft", 0);
-        playerLeaguesLeft = intent.getIntExtra("leaguesLeft", 0);
+        playerLeaguesLeft = intent.getIntExtra("leaguesLeft", 0);*/
 
 
 
-       /* RaceSelectActivity raceSelectActivity = new RaceSelectActivity();
-        race = raceSelectActivity.player.getRace();
-        health = raceSelectActivity.player.getHealth();
+
+
+      /*  RaceSelectActivity raceSelectActivity = new RaceSelectActivity();
+        playerRace = raceSelectActivity.player.getRace();
+        playerHealth = raceSelectActivity.player.getHealth();
         stamina = raceSelectActivity.player.getStamina();
         attackPower = raceSelectActivity.player.getAttackPower();
         weaponDamage = raceSelectActivity.player.getWeaponDamage();
@@ -64,7 +68,8 @@ public class CampActivity extends AppCompatActivity {
         gold = raceSelectActivity.player.getGold();
         daysLeft = raceSelectActivity.player.getDaysLeft();
         leaguesLeft = raceSelectActivity.player.getLeaguesLeft();
-        weaponType = raceSelectActivity.player.getWeaponType();*/
+        playerWeaponType = raceSelectActivity.player.getWeaponType();*/
+
 
         Log.d(TAG, "race = " + playerRace);
         Log.d(TAG, "health = " + playerHealth);

@@ -7,6 +7,7 @@ import java.util.Random;
  */
 public class Weapon {
 
+    private static final String TAG = "Weapon";
     public String weaponType;
     private final String[] umanRisenWeaponsArray = {"Dagger", "1-handed Sword", "2-handed Sword", "1-handed Axe", "2-handed Axe"};
     private final String[] lokenWeaponsArray = {"War Axe", "War hammer", "War Mace", "Scythe", "Polearm"};
@@ -35,7 +36,6 @@ public class Weapon {
         this.weaponDamage = getRandomWeaponDamage(weaponMultiplier);
         this.weaponCost = getWeaponCost();
     }
-
 
     public String generateRandomUmanRisenWeaponType() {
 

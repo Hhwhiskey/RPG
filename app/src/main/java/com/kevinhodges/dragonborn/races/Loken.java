@@ -3,7 +3,7 @@ package com.kevinhodges.dragonborn.races;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.kevinhodges.dragonborn.objects.Player;
+import com.kevinhodges.dragonborn.player.Player;
 
 /**
  * Created by Kevin on 3/21/2016.

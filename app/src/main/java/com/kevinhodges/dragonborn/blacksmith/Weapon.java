@@ -1,4 +1,4 @@
-package com.kevinhodges.dragonborn.objects;
+package com.kevinhodges.dragonborn.blacksmith;
 
 import java.util.Random;
 

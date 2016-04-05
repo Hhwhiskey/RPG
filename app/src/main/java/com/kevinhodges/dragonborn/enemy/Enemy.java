@@ -1,4 +1,4 @@
-package com.kevinhodges.dragonborn.objects;
+package com.kevinhodges.dragonborn.enemy;
 
 import java.util.Random;
 

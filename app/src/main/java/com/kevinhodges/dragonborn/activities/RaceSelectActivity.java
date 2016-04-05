@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
-import com.kevinhodges.dragonborn.objects.Player;
+import com.kevinhodges.dragonborn.player.Player;
 import com.kevinhodges.dragonborn.races.Faerie;
 import com.kevinhodges.dragonborn.races.Loken;
 import com.kevinhodges.dragonborn.races.Risen;

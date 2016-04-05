@@ -1,6 +1,10 @@
-package com.kevinhodges.dragonborn.objects;
+package com.kevinhodges.dragonborn.player;
 
 import android.os.Parcelable;
+
+import com.kevinhodges.dragonborn.blacksmith.Armor;
+import com.kevinhodges.dragonborn.blacksmith.Weapon;
+import com.kevinhodges.dragonborn.potion.Potion;
 
 import java.util.ArrayList;
 
@@ -34,10 +38,6 @@ public abstract class Player implements Parcelable {
     public int strongAttack(int attackPower, int weaponDamage) {
 
         return (attackPower / 10) * weaponDamage;
-    }
-
-    public void usePotion() {
-
     }
 
     //Weapons///////////////////////////////////////////////////////////////////////
@@ -103,15 +103,17 @@ public abstract class Player implements Parcelable {
         return armorList;
     }
 
-
-
     // Armor is auto equipped
     public void buyArmor(int cost, int armorAmount, int gold, int armor) {
         gold -= cost;
         armor += armorAmount;
     }
 
+    //Potions///////////////////////////////////////////////////////////////////////////
 
+    public ArrayList<Potion> generatePotionList() {
+
+    }
 
     //Getters///////////////////////////////////////////////////////////////////////////
 //    public String getRace() {

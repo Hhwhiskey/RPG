@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.TitleActivity;
-import com.kevinhodges.dragonborn.objects.Enemy;
-import com.kevinhodges.dragonborn.objects.Player;
+import com.kevinhodges.dragonborn.enemy.Enemy;
+import com.kevinhodges.dragonborn.player.Player;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
 public class CombatActivity extends AppCompatActivity {

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.kevinhodges.dragonborn.R;
-import com.kevinhodges.dragonborn.objects.Player;
+import com.kevinhodges.dragonborn.player.Player;
 
 public class CampActivity extends AppCompatActivity {
 

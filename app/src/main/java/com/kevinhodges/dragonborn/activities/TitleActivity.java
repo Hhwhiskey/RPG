@@ -1,4 +1,4 @@
-package com.kevinhodges.dragonborn;
+package com.kevinhodges.dragonborn.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kevinhodges.dragonborn.activities.RaceSelectActivity;
+import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
 public class TitleActivity extends AppCompatActivity {

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".activities.MainActivity"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Health: 100"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/healthColor"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/staminaColor"
+            android:text="Stamina: 100"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:id="@+id/linearLayout3">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Armor: 300"
+            android:id="@+id/textView4"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/armorColor"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Attack: 1200"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/attackColor"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Gold: 950"
+            android:id="@+id/textView5"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/goldColor"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_toEndOf="@+id/fragment_chapter1"
+        android:layout_toRightOf="@+id/fragment_chapter1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Days: 400"
+            android:id="@+id/textView10"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Leagues: 10000"
+            android:id="@+id/textView11"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </fragment>
+
+
+</RelativeLayout>

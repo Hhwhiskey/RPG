@@ -12,8 +12,6 @@ public class DragonbornApplication extends Application {
         super.onCreate();
     }
 
-
-
     @Override
     public void onTerminate() {
         super.onTerminate();

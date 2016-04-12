@@ -3,13 +3,17 @@ package com.kevinhodges.dragonborn.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.kevinhodges.dragonborn.R;
+import com.kevinhodges.dragonborn.afragments.CampFragment;
+import com.kevinhodges.dragonborn.player.Player;
 
 public class InfoActivity extends AppCompatActivity {
 
+    private static final String TAG = "InfoActivity";
     private String playerRace;
     private String playerWeaponType;
     private int playerHealth;
@@ -20,6 +24,7 @@ public class InfoActivity extends AppCompatActivity {
     private int playerGold;
     private int playerDaysLeft;
     private int playerLeaguesLeft;
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +32,10 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         Intent intent = getIntent();
-        playerRace = intent.getStringExtra("race");
-        playerWeaponType = intent.getStringExtra("weaponType");
-        playerHealth = intent.getIntExtra("health", 0);
-        playerStamina = intent.getIntExtra("stamina", 0);
-        playerAttackPower = intent.getIntExtra("attackPower", 0);
-        playerWeaponDamage = intent.getIntExtra("weaponDamage", 0);
-        playerArmor = intent.getIntExtra("armor", 0);
-        playerGold = intent.getIntExtra("gold", 0);
-        playerDaysLeft = intent.getIntExtra("daysLeft", 0);
-        playerLeaguesLeft = intent.getIntExtra("leaguesLeft", 0);
+        player = intent.getParcelableExtra("playerObject");
+
+        Log.d(TAG, "Health = " + player.getHealth());
+
 
         //UI Declarations///////////////////////////////////////////////////////////
         Button beginButton = (Button) findViewById(R.id.button_begin);
@@ -45,18 +44,9 @@ public class InfoActivity extends AppCompatActivity {
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InfoActivity.this, CampActivity.class);
-                intent.putExtra("race", playerRace);
-                intent.putExtra("weaponType", playerWeaponType);
-                intent.putExtra("health", playerHealth);
-                intent.putExtra("stamina", playerStamina);
-                intent.putExtra("attackPower", playerAttackPower);
-                intent.putExtra("weaponDamage", playerWeaponDamage);
-                intent.putExtra("armor", playerArmor);
-                intent.putExtra("gold", playerGold);
-                intent.putExtra("daysLeft", playerDaysLeft);
-                intent.putExtra("leaguesLeft", playerLeaguesLeft);
-                startActivity(intent);
+                Intent campIntent = new Intent(InfoActivity.this, CampFragment.class);
+                campIntent.putExtra("playerObject", player);
+                startActivity(campIntent);
             }
         });
     }

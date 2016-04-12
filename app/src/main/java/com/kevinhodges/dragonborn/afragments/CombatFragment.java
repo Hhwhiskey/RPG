@@ -1,29 +1,29 @@
-package com.kevinhodges.dragonborn.activities;
+package com.kevinhodges.dragonborn.afragments;
 
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
-import com.kevinhodges.dragonborn.TitleActivity;
 import com.kevinhodges.dragonborn.enemy.Enemy;
 import com.kevinhodges.dragonborn.player.Player;
 import com.kevinhodges.dragonborn.utils.MusicService;
 
-public class CombatActivity extends AppCompatActivity {
+public class CombatFragment extends Fragment {
 
-    private static final String TAG = "CombatActivity";
+    private static final String TAG = "CombatFragment";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Intent svc;
@@ -37,30 +37,31 @@ public class CombatActivity extends AppCompatActivity {
     private static int enemyCount;
     public Player player;
 
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_combat);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_combat, container, false);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sharedPreferences.edit();
 
         isMusicPlaying = sharedPreferences.getBoolean("isMusicPlaying", false);
 
         //UI Declarations///////////////////////////////////////////////////////////
-        attackButton = (Button) findViewById(R.id.button_attack);
-        heroicButton = (Button) findViewById(R.id.button_heroic);
-        potionsButton = (Button) findViewById(R.id.button_potions);
-        fleeButton = (Button) findViewById(R.id.button_flee);
+        attackButton = (Button) view.findViewById(R.id.button_attack);
+        heroicButton = (Button) view.findViewById(R.id.button_heroic);
+        potionsButton = (Button) view.findViewById(R.id.button_potions);
+        fleeButton = (Button) view.findViewById(R.id.button_flee);
         ///////////////////////////////////////////////////////////////////////////
 
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final Dialog attackDialog = new Dialog(CombatActivity.this);
+                final Dialog attackDialog = new Dialog(getActivity());
                 attackDialog.setContentView(R.layout.dialog_attack);
 
                 Button weakAttackButton = (Button) attackDialog.findViewById(R.id.dialog_button_weak_attack);
@@ -70,7 +71,7 @@ public class CombatActivity extends AppCompatActivity {
                 weakAttackButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(CombatActivity.this, "Weak attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Weak attack", Toast.LENGTH_SHORT).show();
                         attackDialog.dismiss();
                     }
                 });
@@ -78,7 +79,7 @@ public class CombatActivity extends AppCompatActivity {
                 mediumAttackButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(CombatActivity.this, "Medium attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Medium attack", Toast.LENGTH_SHORT).show();
                         attackDialog.dismiss();
                     }
                 });
@@ -86,7 +87,7 @@ public class CombatActivity extends AppCompatActivity {
                 strongAttackButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(CombatActivity.this, "Strong attack", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Strong attack", Toast.LENGTH_SHORT).show();
                         attackDialog.dismiss();
                     }
                 });
@@ -127,34 +128,14 @@ public class CombatActivity extends AppCompatActivity {
         Log.d(TAG, enemyRace + " Stamina: " + enemyStamina);
         Log.d(TAG, enemyRace + " Armor: " + enemyArmor);
         Log.d(TAG, enemyRace + " Damage: " + enemyDamage);
+
+        return view;
     }
 
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
 //        Log.d(TAG, "isMusicPlaying = " + isMusicPlaying);
@@ -162,30 +143,21 @@ public class CombatActivity extends AppCompatActivity {
         isActivityIntent = false;
 
         if (!isMusicPlaying) {
-            svc = new Intent(this, MusicService.class);
-            startService(svc);
+            svc = new Intent(getActivity(), MusicService.class);
+            getActivity().startService(svc);
         }
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
 
         if (!isActivityIntent) {
-            svc = new Intent(this, MusicService.class);
-            stopService(svc);
+            svc = new Intent(getActivity(), MusicService.class);
+            getActivity().stopService(svc);
             editor.putBoolean("isMusicPlaying", false);
             editor.commit();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        isActivityIntent = true;
-
-        Intent titleActivityIntent = new Intent(CombatActivity.this, TitleActivity.class);
-        startActivity(titleActivityIntent);
     }
 
     public Player getPlayer() {

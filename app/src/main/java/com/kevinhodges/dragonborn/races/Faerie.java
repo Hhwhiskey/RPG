@@ -98,7 +98,6 @@ public class Faerie extends Player {
         dest.writeInt(leaguesLeft);
     }
 
-
     public static final Parcelable.Creator<Faerie> CREATOR = new Parcelable.Creator<Faerie>() {
         public Faerie createFromParcel(Parcel in) {
             return new Faerie(in);

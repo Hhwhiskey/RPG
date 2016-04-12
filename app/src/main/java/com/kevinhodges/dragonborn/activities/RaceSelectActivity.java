@@ -159,110 +159,33 @@ public class RaceSelectActivity extends AppCompatActivity {
 
                         player = new Uman();
 
-                        player.generateBlacksmithWeaponList(player.getRace(), player.getLeaguesLeft());
-
-                        playerRace = player.getRace();
-                        playerWeaponType = player.getWeaponType();
-                        playerHealth = player.getHealth();
-                        playerStamina = player.getStamina();
-                        playerAttackPower = player.getAttackPower();
-                        playerWeaponDamage = player.getWeaponDamage();
-                        playerArmor = player.getArmor();
-                        playerGold = player.getGold();
-                        playerDaysLeft = player.getDaysLeft();
-                        playerLeaguesLeft = player.getLeaguesLeft();
-                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
-                        blacksmithArmorList = player.generateBlackSmithArmorList(true, playerLeaguesLeft);
-
-                        Log.d(TAG, "race = " + playerRace);
-                        Log.d(TAG, "weaponType = " + playerWeaponType);
-                        Log.d(TAG, "health = " + playerHealth);
-                        Log.d(TAG, "stamina = " + playerStamina);
-                        Log.d(TAG, "attackPower = " + playerAttackPower);
-                        Log.d(TAG, "weaponDamage = " + playerWeaponDamage);
-                        Log.d(TAG, "armor = " + playerArmor);
-                        Log.d(TAG, "gold = " + playerGold);
-                        Log.d(TAG, "daysLeft = " + playerDaysLeft);
-                        Log.d(TAG, "leaguesLeft = " + playerLeaguesLeft);
-                        Log.d(TAG, "weaponList = " + blacksmithWeaponList);
-                        Log.d(TAG, "armorList = " + blacksmithArmorList);
-
-
                         break;
 
                     case "Faerie":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Talion, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
+
                         player = new Faerie();
-
-                        playerRace = player.getRace();
-                        playerWeaponType = player.getWeaponType();
-                        playerHealth = player.getHealth();
-                        playerStamina = player.getStamina();
-                        playerAttackPower = player.getAttackPower();
-                        playerWeaponDamage = player.getWeaponDamage();
-                        playerArmor = player.getArmor();
-                        playerGold = player.getGold();
-                        playerDaysLeft = player.getDaysLeft();
-                        playerLeaguesLeft = player.getLeaguesLeft();
-                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
-                        blacksmithArmorList = player.generateBlackSmithArmorList(false, playerLeaguesLeft);
-
-                        Log.d(TAG, "Faerie armor list: " + blacksmithArmorList);
-
 
                         break;
 
                     case "Loken":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Duunbar, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-                        player = new Loken();
 
-                        playerRace = player.getRace();
-                        playerWeaponType = player.getWeaponType();
-                        playerHealth = player.getHealth();
-                        playerStamina = player.getStamina();
-                        playerAttackPower = player.getAttackPower();
-                        playerWeaponDamage = player.getWeaponDamage();
-                        playerArmor = player.getArmor();
-                        playerGold = player.getGold();
-                        playerDaysLeft = player.getDaysLeft();
-                        playerLeaguesLeft = player.getLeaguesLeft();
-                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
+                        player = new Loken();
 
                         break;
 
                     case "Risen":
                         Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, The Urthen Crypts, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-                        player = new Risen();
 
-                        playerRace = player.getRace();
-                        playerWeaponType = player.getWeaponType();
-                        playerHealth = player.getHealth();
-                        playerStamina = player.getStamina();
-                        playerAttackPower = player.getAttackPower();
-                        playerWeaponDamage = player.getWeaponDamage();
-                        playerArmor = player.getArmor();
-                        playerGold = player.getGold();
-                        playerDaysLeft = player.getDaysLeft();
-                        playerLeaguesLeft = player.getLeaguesLeft();
-                        blacksmithWeaponList = player.generateBlacksmithWeaponList(playerRace, playerLeaguesLeft);
+                        player = new Risen();
 
                         break;
                 }
 
-                Intent intent = new Intent(RaceSelectActivity.this, InfoActivity.class);
-                /*intent.putExtra("race", race);
-                intent.putExtra("weaponType", playerWeaponType);
-                intent.putExtra("health", playerHealth);
-                intent.putExtra("stamina", playerStamina);
-                intent.putExtra("attackPower", playerAttackPower);
-                intent.putExtra("weaponDamage", playerWeaponDamage);
-                intent.putExtra("armor", playerArmor);
-                intent.putExtra("gold", playerGold);
-                intent.putExtra("daysLeft", playerDaysLeft);
-                intent.putExtra("leaguesLeft", playerLeaguesLeft);*/
-
-                intent.putExtra("playerObject", player);
-                startActivity(intent);
+                Intent infoIntent = new Intent(RaceSelectActivity.this, InfoActivity.class);
+                infoIntent.putExtra("playerObject", player);
+                startActivity(infoIntent);
 
                 isActivityIntent = true;
             }

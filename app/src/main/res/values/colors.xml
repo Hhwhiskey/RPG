@@ -6,6 +6,11 @@
     <color name="colorBackground">#000000</color>
     <color name="colorPrimaryText">#FFFFFF</color>
     <color name="colorDialogBox">#7d000000</color>
+    <color name="healthColor">#d50000</color>
+    <color name="staminaColor">#2196f3</color>
+    <color name="armorColor">#757575</color>
+    <color name="attackColor">#ff4d00</color>
+    <color name="goldColor">#FFD700</color>
 
 
 

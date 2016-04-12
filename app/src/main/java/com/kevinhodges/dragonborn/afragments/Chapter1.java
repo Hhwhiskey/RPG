@@ -1,4 +1,4 @@
-package com.kevinhodges.dragonborn.fragments;
+package com.kevinhodges.dragonborn.afragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

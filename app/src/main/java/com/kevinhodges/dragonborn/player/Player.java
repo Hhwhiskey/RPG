@@ -16,6 +16,38 @@ public abstract class Player implements Parcelable {
     public abstract void heroic();
 
 
+    //Gold///////////////////////////////////////////////////////////////////////////////////////
+    public void spendPlayerGold(int amount) {
+        int playerGold = getGold();
+        playerGold -= amount;
+
+        setGold(playerGold);
+    }
+
+    //Health///////////////////////////////////////////////////////////////////////////////////
+    public int healPlayerToFull() {
+        String playerRace = getRace();
+
+        switch(playerRace) {
+            case "Uman":
+                 setHealth(200);
+                 break;
+
+            case "Faerie":
+                 setHealth(50);
+                 break;
+
+            case "Loken":
+                 setHealth(100);
+                 break;
+
+            case "Risen":
+                 setHealth(100);
+                 break;
+        }
+      return getHealth();
+    }
+
     //Attacks////////////////////////////////////////////////////////////////////////////////////
     public int weakAttack(int attackPower, int weaponDamage) {
 
@@ -115,37 +147,49 @@ public abstract class Player implements Parcelable {
         return null;
     }
 
-    //Getters///////////////////////////////////////////////////////////////////////////
-//    public String getRace() {
-//        return race;
-//    }
-
+    //Abstract Getters///////////////////////////////////////////////////////////////////////////
     public abstract String getRace();
+
+    public abstract String getWeaponType();
 
     public abstract int getHealth();
 
-
     public abstract int getStamina();
-
 
     public abstract int getAttackPower();
 
-
     public abstract int getWeaponDamage();
-
 
     public abstract int getArmor();
 
-
     public abstract int getGold();
-
 
     public abstract int getDaysLeft();
 
-
     public abstract int getLeaguesLeft();
 
+    // Abstract Setters/////////////////////////////////////////////////////////////////////////////
+    public abstract void setRace(String race);
 
-    public abstract String getWeaponType();
+    public abstract void setWeaponType(String weaponType);
+
+    public abstract void setHealth(int health);
+
+    public abstract void setStamina(int stamina);
+
+    public abstract void setAttackPower(int attackPower);
+
+    public abstract void setWeaponDamage(int weaponDamage);
+
+    public abstract void setArmor(int armor);
+
+    public abstract void setGold(int gold);
+
+    public abstract void setDaysLeft(int daysLeft);
+
+    public abstract void setLeaguesLeft(int leaguesLeft);
+
+
+
 
 }

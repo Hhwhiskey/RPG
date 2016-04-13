@@ -34,6 +34,7 @@ public class Risen extends Player {
 
     }
 
+    //Getters//////////////////////////////////////////////////////////////////////////////////////
     public String getRace() {
         return race;
     }
@@ -58,7 +59,6 @@ public class Risen extends Player {
         return attackPower;
     }
 
-
     public int getWeaponDamage() {
         return weaponDamage;
     }
@@ -73,6 +73,54 @@ public class Risen extends Player {
 
     public int getLeaguesLeft() {
         return leaguesLeft;
+    }
+
+
+    //Setters//////////////////////////////////////////////////////////////////////////////////////
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public void setWeaponType(String weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+
+    public void setArmor(int armor) {
+        this.armor = armor;
+    }
+
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+
+    public void setWeaponDamage(int weaponDamage) {
+        this.weaponDamage = weaponDamage;
+    }
+
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+
+    public void setDaysLeft(int daysLeft) {
+        this.daysLeft = daysLeft;
+    }
+
+
+    public void setLeaguesLeft(int leaguesLeft) {
+        this.leaguesLeft = leaguesLeft;
     }
 
 

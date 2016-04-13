@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.kevinhodges.dragonborn.R;
-import com.kevinhodges.dragonborn.afragments.CampFragment;
 import com.kevinhodges.dragonborn.player.Player;
 
 public class InfoActivity extends AppCompatActivity {
@@ -44,8 +43,9 @@ public class InfoActivity extends AppCompatActivity {
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent campIntent = new Intent(InfoActivity.this, CampFragment.class);
+                Intent campIntent = new Intent(InfoActivity.this, MainActivity.class);
                 campIntent.putExtra("playerObject", player);
+                finish();
                 startActivity(campIntent);
             }
         });

@@ -25,6 +25,8 @@ public class BlacksmithFragment extends Fragment {
     private TextView attackTV;
     private TextView daysTV;
     private TextView leaguesTV;
+    private Button blacksmithLeaveButton;
+    private Button blacksmithWeaponsButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +35,22 @@ public class BlacksmithFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         player = intent.getParcelableExtra("playerObject");
 
+        //UI Declarations///////////////////////////////////////////////////////////
+        blacksmithLeaveButton = (Button) view.findViewById(R.id.button_leave_blacksmith);
+        blacksmithWeaponsButton = (Button) view.findViewById(R.id.button_blacksmith_weapons);
+        blacksmithArmorButton = (Button) view.findViewById(R.id.button_blacksmith_armor);
+        ///////////////////////////////////////////////////////////////////////////
+
+        blacksmithLeaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
+
         return view;
     }
+
+
 }

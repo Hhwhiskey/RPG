@@ -19,28 +19,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Health: 100"
-            android:id="@+id/textView"
+            android:id="@+id/tv_player_health"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textColor="@color/healthColor"
             android:textSize="18dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:typeface="serif"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="4dp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2"
+            android:text="Leagues: 10000"
+            android:id="@+id/tv_player_leagues_left"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/staminaColor"
-            android:text="Stamina: 100"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center|center_horizontal"
             android:typeface="serif"
             android:layout_marginBottom="8dp" />
 
@@ -54,49 +55,34 @@
 
 
         <TextView
+            android:id="@+id/tv_player_stamina"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Armor: 300"
-            android:id="@+id/textView4"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="@color/armorColor"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/staminaColor"
+            android:text="Stamina: 100"
             android:textSize="18dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center|center_horizontal"
             android:typeface="serif"
             android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Attack: 1200"
-            android:id="@+id/textView3"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/attackColor"
-            android:textSize="18dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:typeface="serif"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Gold: 950"
-            android:id="@+id/textView5"
+            android:text="Days: 400"
+            android:id="@+id/tv_player_days_left"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="@color/goldColor"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center|center_horizontal"
             android:typeface="serif"
             android:layout_marginBottom="8dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -104,44 +90,46 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout3"
         android:layout_toEndOf="@+id/fragment_chapter1"
-        android:layout_toRightOf="@+id/fragment_chapter1">
+        android:layout_toRightOf="@+id/fragment_chapter1"
+        android:id="@+id/linearLayout5">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Days: 400"
-            android:id="@+id/textView10"
+            android:text="Armor: 300"
+            android:id="@+id/tv_player_armor"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/armorColor"
             android:textSize="18dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:typeface="serif"
             android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Leagues: 10000"
-            android:id="@+id/textView11"
+            android:text="Gold: 950"
+            android:id="@+id/tv_player_gold"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/goldColor"
             android:textSize="18dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:typeface="serif"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="4dp" />
+
     </LinearLayout>
 
-    <fragment
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </fragment>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout5" />
 
 
 </RelativeLayout>

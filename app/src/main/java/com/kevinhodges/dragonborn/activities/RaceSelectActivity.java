@@ -185,6 +185,7 @@ public class RaceSelectActivity extends AppCompatActivity {
 
                 Intent infoIntent = new Intent(RaceSelectActivity.this, InfoActivity.class);
                 infoIntent.putExtra("playerObject", player);
+                finish();
                 startActivity(infoIntent);
 
                 isActivityIntent = true;

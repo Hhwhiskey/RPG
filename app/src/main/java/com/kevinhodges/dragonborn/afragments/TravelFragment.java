@@ -1,23 +1,26 @@
 package com.kevinhodges.dragonborn.afragments;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.player.Player;
 
-public class TravelFragment extends AppCompatActivity {
+public class TravelFragment extends Fragment {
 
     private Player player;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_travel);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_alchemist, container, false);
 
-        Intent intent = getIntent();
+        Intent intent = getActivity().getIntent();
         player = intent.getParcelableExtra("playerObject");
 
+        return view;
     }
 }

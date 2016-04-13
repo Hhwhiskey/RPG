@@ -55,6 +55,7 @@ public class TitleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent beginIntent = new Intent(TitleActivity.this, RaceSelectActivity.class);
                 startActivity(beginIntent);
+                finish();
                 isActivityIntent = true;
             }
         });

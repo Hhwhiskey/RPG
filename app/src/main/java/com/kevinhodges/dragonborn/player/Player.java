@@ -168,6 +168,32 @@ public abstract class Player implements Parcelable {
 
     public abstract int getLeaguesLeft();
 
+
+    public int getMaxHealth() {
+        String race = getRace();
+
+        int health = 0;
+
+        switch(race) {
+            case "Uman":
+                 health = 200;
+                 break;
+
+            case "Faerie":
+                 health = 50;
+                 break;
+
+            case "Loken":
+                 health = 100;
+                 break;
+
+            case "Risen":
+                 health = 100;
+                 break;
+        }
+       return health;
+    }
+
     // Abstract Setters/////////////////////////////////////////////////////////////////////////////
     public abstract void setRace(String race);
 

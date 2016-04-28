@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.player.Player;
@@ -70,7 +69,6 @@ public class RaceSelectActivity extends AppCompatActivity {
         final String faerie = "Talion, home of the magical and secretive Faerie. Nearly wiped out by the Loken many years ago if not for the Uman assistance, Talion is only just now becoming what it once was. Although small in stature and only representing a very small portion of Evon's people, they are the most feared in Evon because of their mastery of black magic. Faerie have been known to cast spells from extreme distances and destroy their opponent before they even have a chance.";
         final String loken = "Duunbar is the home of the Loken - massive brutes that thrive in combat and are driven by the destruction of Evon's people. Duunbar's proximity to Urth has allowed nearly 3 millenia of war between these two factions. The Loken have survived through their pillaging of Uman towns and homes. While not the most intelligent beings, their superior weapon training and size allows them to wield massive weapons and fight more efficiently.";
         final String risen = "Beneath Urth lie the Urthen Crypts, here rest the corpses of all ancient Urthen warriors. Crossed many years ago by the Uman King 'Uther', these warriors lie in wait for the day they may avenge their death. In an attempt at destroying Urth, Loken Shaman have raised them from the dead and forced them to wage war against the Urth and Talion. Although the Risen are fairly weak, the dead do not tire, and therefor do not have the burden of stamina.";
-        String begin = "Your adventure begins...";
 
         //UI Declarations///////////////////////////////////////////////////////////
         umanTextView = (TextView) findViewById(R.id.tv_uman);
@@ -155,40 +153,41 @@ public class RaceSelectActivity extends AppCompatActivity {
 
                 switch (race) {
                     case "Uman":
-                        Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Urth, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-
                         player = new Uman();
 
                         break;
 
                     case "Faerie":
-                        Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Talion, under attack from the Loken and Risen armies.", Toast.LENGTH_LONG).show();
-
                         player = new Faerie();
 
                         break;
 
                     case "Loken":
-                        Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, Duunbar, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-
                         player = new Loken();
 
                         break;
 
                     case "Risen":
-                        Toast.makeText(RaceSelectActivity.this, "You dreamt of your home, The Urthen Crypts, under attack from the Uman and Faerie armies.", Toast.LENGTH_LONG).show();
-
                         player = new Risen();
 
                         break;
                 }
 
-                Intent infoIntent = new Intent(RaceSelectActivity.this, InfoActivity.class);
+//                Intent infoIntent = new Intent(RaceSelectActivity.this, InfoActivity.class);
+//                infoIntent.putExtra("playerObject", player);
+//                finish();
+//                startActivity(infoIntent);
+//
+//                isActivityIntent = true;
+
+                Intent infoIntent = new Intent(RaceSelectActivity.this, MainActivity.class);
                 infoIntent.putExtra("playerObject", player);
                 finish();
                 startActivity(infoIntent);
 
                 isActivityIntent = true;
+
+
             }
         });
     }

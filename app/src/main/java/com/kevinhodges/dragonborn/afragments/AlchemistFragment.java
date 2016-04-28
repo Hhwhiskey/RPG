@@ -21,7 +21,7 @@ public class AlchemistFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         player = intent.getParcelableExtra("playerObject");
         return view;
-        
+
 
     }
 }

@@ -31,11 +31,8 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Intent intent = getIntent();
         player = intent.getParcelableExtra("playerObject");
-
-        Log.d(TAG, "onCreate: " + player.getHealth());
 
 
         //UI Declarations///////////////////////////////////////////////////////////
@@ -62,13 +59,37 @@ public class MainActivity extends FragmentActivity {
                 .beginTransaction()
                 .add(R.id.main_fragment_container, campFragment)
                 .commit();
+    }
 
 
+    // Methods to update MainActivity TextViews//////////////////////////////////////////////////
+    public void updateHealthTextView(int healthAmount) {
+        healthTV.setText("Health: " + String.valueOf(healthAmount));
+    }
 
+    public void updateArmorTextView(int armorAmount) {
+        armorTV.setText("Armor: " + String.valueOf(armorAmount));
+    }
+
+    public void updateStaminaTextView(int staminaAmount) {
+        staminaTV.setText("Stamina: " + String.valueOf(staminaAmount));
+    }
+
+    public void updateLeaguesTextView(int leaguesLeft) {
+        leaguesTV.setText("Leagues: " + String.valueOf(leaguesLeft));
+    }
+
+    public void updateDaysTextView(int daysLeft) {
+        daysTV.setText("Days: " + String.valueOf(daysLeft));
     }
 
     public void updateGoldTextView(int goldAmount) {
-        goldTV.setText("Test");
+        goldTV.setText("Gold: " + String.valueOf(goldAmount));
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    public Player getPlayer() {
+        return player;
     }
 
     @Override

@@ -15,10 +15,10 @@
         android:layout_height="wrap_content"
         android:text="The Soothsayer has the ability to heal your wounds. Would you like to be healed?"
         android:id="@+id/textView13"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textAppearance="@style/SecondaryFont"
+        android:textColor="@color/secondary_text_default_material_dark"
+        android:layout_centerVertical="true" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView13"
-        android:layout_margin="24dp">
+        android:layout_margin="24dp"
+        android:id="@+id/linearLayout4">
 
         <TextView
             android:layout_width="0dp"
@@ -36,7 +37,7 @@
             android:id="@+id/textView14"
             android:layout_below="@+id/textView13"
             android:layout_centerHorizontal="true"
-            android:layout_weight="1"
+            android:layout_weight="1.25"
             android:gravity="right" />
 
         <TextView
@@ -76,5 +77,18 @@
             android:background="#000000" />
 
     </LinearLayout>
+
+    <TextView
+        android:textAppearance="@style/PrimaryFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You enter the Soothsayer&apos;s hut..."
+        android:id="@+id/textView15"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

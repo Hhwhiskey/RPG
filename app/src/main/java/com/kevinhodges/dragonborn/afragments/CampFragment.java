@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.player.Player;
@@ -31,6 +30,8 @@ public class CampFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         player = intent.getParcelableExtra("playerObject");
 
+
+
 //        Log.d(TAG, "race = " + );
 //        Log.d(TAG, "health = " + );
 //        Log.d(TAG, "weaponType = " + );
@@ -46,8 +47,6 @@ public class CampFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "You enter the Blacksmith", Toast.LENGTH_SHORT).show();
-
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 BlacksmithFragment blacksmithFragment = new BlacksmithFragment();
                 ft.replace(R.id.main_fragment_container, blacksmithFragment);
@@ -60,7 +59,6 @@ public class CampFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "You enter the Alchemist shop", Toast.LENGTH_SHORT).show();
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 AlchemistFragment alchemistFragment = new AlchemistFragment();
@@ -74,8 +72,6 @@ public class CampFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "You enter the Soothsayer shop", Toast.LENGTH_SHORT).show();
-
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 SoothsayerFragment soothsayerFragment = new SoothsayerFragment();
                 ft.replace(R.id.main_fragment_container, soothsayerFragment);
@@ -87,8 +83,6 @@ public class CampFragment extends Fragment {
         travelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(getActivity(), "You begin to travel", Toast.LENGTH_SHORT).show();
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 TravelFragment travelFragment = new TravelFragment();

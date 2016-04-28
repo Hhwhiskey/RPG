@@ -11,7 +11,7 @@ import com.kevinhodges.dragonborn.player.Player;
 public class Uman extends Player {
 
     private String race = "Uman";
-    private int health = 200;
+    private int health = 25;
     private int stamina = 50;
     private int armor = 20;
     private int attackPower = 100;
@@ -23,7 +23,6 @@ public class Uman extends Player {
     private String trait = "Very high health and better armor.";
     private String special = "Shield wall - Take no damage the next 3 turns";
     private boolean invincible = false;
-    private Object parcel;
 
 
     public Uman() {

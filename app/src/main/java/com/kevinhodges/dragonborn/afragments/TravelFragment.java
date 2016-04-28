@@ -3,6 +3,7 @@ package com.kevinhodges.dragonborn.afragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.kevinhodges.dragonborn.player.Player;
 
 public class TravelFragment extends Fragment {
 
+    private static final String TAG = "TravelFragment";
     private Player player;
 
     @Override
@@ -20,6 +22,9 @@ public class TravelFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         player = intent.getParcelableExtra("playerObject");
+
+        Log.d(TAG, "onCreate: Player health is now " + player.getHealth());
+
 
         return view;
     }

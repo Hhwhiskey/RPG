@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Health: 100"
+            android:text="Health: xxx"
             android:id="@+id/tv_player_health"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Leagues: 10000"
+            android:text="Leagues: xxx"
             android:id="@+id/tv_player_leagues_left"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -61,7 +61,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:textColor="@color/staminaColor"
-            android:text="Stamina: 100"
+            android:text="Stamina: xxx"
             android:textSize="18dp"
             android:layout_weight="1"
             android:gravity="center|center_horizontal"
@@ -71,7 +71,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Days: 400"
+            android:text="Days: xxx"
             android:id="@+id/tv_player_days_left"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -96,7 +96,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Armor: 300"
+            android:text="Armor: xxx"
             android:id="@+id/tv_player_armor"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Gold: 950"
+            android:text="Gold: xxx"
             android:id="@+id/tv_player_gold"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"

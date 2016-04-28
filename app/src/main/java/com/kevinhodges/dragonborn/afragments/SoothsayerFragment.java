@@ -3,7 +3,6 @@ package com.kevinhodges.dragonborn.afragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kevinhodges.dragonborn.R;
+import com.kevinhodges.dragonborn.activities.MainActivity;
 import com.kevinhodges.dragonborn.player.Player;
 
 public class SoothsayerFragment extends Fragment {
@@ -30,12 +30,14 @@ public class SoothsayerFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         player = intent.getParcelableExtra("playerObject");
 
+        final MainActivity mainActivity = (MainActivity) getActivity();
 
 
         //UI Declarations///////////////////////////////////////////////////////////
         soothsayerHealCostTV = (TextView) view.findViewById(R.id.tv_soothsayer_heal_cost);
         leaveSoothsayerButton = (Button) view.findViewById(R.id.button_soothsayer_leave);
         healSoothsayerButton = (Button) view.findViewById(R.id.button_soothsayer_heal);
+        goldTV = (TextView) view.findViewById(R.id.tv_player_gold);
         ///////////////////////////////////////////////////////////////////////////
 
         final int soothsayerHealCostInt = generateSoothsayerHealCost(player.getLeaguesLeft());
@@ -54,22 +56,21 @@ public class SoothsayerFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (player.getGold() >= soothsayerHealCostInt) {
+                if (player.getHealth() == player.getMaxHealth() ) {
+                    Toast.makeText(getActivity(), "You are already at full health", Toast.LENGTH_SHORT).show();
+
+                } else if (player.getGold() < soothsayerHealCostInt) {
+                    Toast.makeText(getActivity(), "You do not have enough gold", Toast.LENGTH_SHORT).show();
+
+                } else {
 
                     player.spendPlayerGold(soothsayerHealCostInt);
                     player.healPlayerToFull();
 
-//                    MainActivity mainActivity = new MainActivity();
-//                    mainActivity.updateGoldTextView(player.getGold());
-
-                    Log.d(TAG, "Player health = " + player.getHealth());
-                    Log.d(TAG, "Player gold = " + player.getGold());
+                    mainActivity.updateGoldTextView(player.getGold());
+                    mainActivity.updateHealthTextView(player.healPlayerToFull());
 
                     Toast.makeText(getActivity(), "You have been healed", Toast.LENGTH_SHORT).show();
-
-
-                } else {
-                    Toast.makeText(getActivity(), "You cannot afford this.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

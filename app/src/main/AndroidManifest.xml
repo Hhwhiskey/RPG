@@ -13,23 +13,17 @@
             android:name=".utils.MusicService"
             android:stopWithTask="true" />
 
-        <activity android:name=".activities.TitleActivity">
+        <activity android:name=".activities.RaceSelectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RaceSelectActivity" />
-        <activity android:name=".afragments.CombatFragment" />
+        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.InfoActivity" />
         <activity android:name=".activities.StoryActivity" />
-        <activity android:name=".afragments.CampFragment" />
-        <activity android:name=".afragments.BlacksmithFragment" />
-        <activity android:name=".afragments.AlchemistFragment" />
-        <activity android:name=".afragments.SoothsayerFragment" />
-        <activity android:name=".afragments.TravelFragment" />
-        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".activities.TitleActivity"></activity>
     </application>
 
 </manifest>

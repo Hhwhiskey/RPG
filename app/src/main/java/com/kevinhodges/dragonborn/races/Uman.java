@@ -11,7 +11,7 @@ import com.kevinhodges.dragonborn.player.Player;
 public class Uman extends Player {
 
     private String race = "Uman";
-    private int health = 25;
+    private int health = 200;
     private int stamina = 50;
     private int armor = 20;
     private int attackPower = 100;

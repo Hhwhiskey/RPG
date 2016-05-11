@@ -73,7 +73,7 @@ public abstract class Player implements Parcelable {
     }
 
     //Weapons///////////////////////////////////////////////////////////////////////
-    public ArrayList<String> generateBlacksmithWeaponList(String race, int leaguesLeft) {
+    public ArrayList<Weapon> generateBlacksmithWeaponList(String race, int leaguesLeft) {
 
         int weaponMultiplier = ((10000 - leaguesLeft) / 100) + 1;
 
@@ -83,20 +83,25 @@ public abstract class Player implements Parcelable {
         Weapon weapon4 = new Weapon(race, weaponMultiplier);
         Weapon weapon5 = new Weapon(race, weaponMultiplier);
 
-        Weapon[] weaponObjectsArray = {weapon1, weapon2, weapon3, weapon4, weapon5};
-        ArrayList<String> weaponList = new ArrayList<>();
+        ArrayList <Weapon> weaponObjectsArray = new ArrayList<>();
+        weaponObjectsArray.add(weapon1);
+        weaponObjectsArray.add(weapon2);
+        weaponObjectsArray.add(weapon3);
+        weaponObjectsArray.add(weapon4);
+        weaponObjectsArray.add(weapon5);
+//        ArrayList<Weapon> weaponList = new ArrayList<>();
 
-        for (Weapon weapon : weaponObjectsArray) {
-            String weaponType = weapon.weaponType;
-            String weaponDamage = String.valueOf(weapon.weaponDamage);
-            String weaponCost = String.valueOf(weapon.weaponCost);
+//        for (Weapon weapon : weaponObjectsArray) {
+//            Weapon weaponType = weapon.weaponType;
+//            String weaponDamage = String.valueOf(weapon.weaponDamage);
+//            String weaponCost = String.valueOf(weapon.weaponCost);
+//
+//            weaponList.add(weaponType);
+//            weaponList.add(weaponDamage);
+//            weaponList.add(weaponCost);
+//        }
 
-            weaponList.add(weaponType);
-            weaponList.add(weaponDamage);
-            weaponList.add(weaponCost);
-        }
-
-        return weaponList;
+        return weaponObjectsArray;
     }
 
     // TODO: 4/1/2016  Pass WeaponObject that is clicked to the buy dialog then add it to inventory

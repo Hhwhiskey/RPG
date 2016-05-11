@@ -68,7 +68,7 @@ public class Weapon {
 
         Random random = new Random();
 
-        return random.nextInt(100) * weaponMultiplier;
+        return random.nextInt((100) * weaponMultiplier) + 1;
     }
 
     public int getWeaponCost() {

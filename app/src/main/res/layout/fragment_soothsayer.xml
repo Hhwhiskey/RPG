@@ -82,7 +82,7 @@
         android:textAppearance="@style/PrimaryFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You enter the Soothsayer&apos;s hut..."
+        android:text="Soothsayer&apos;s Hut"
         android:id="@+id/textView15"
         android:gravity="center"
         android:layout_alignParentTop="true"

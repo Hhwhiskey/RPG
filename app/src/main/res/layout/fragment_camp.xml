@@ -76,10 +76,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is the top of the Camp fragment"
+        android:text="Camp"
         android:id="@+id/textView12"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/PrimaryFont"
+        android:textSize="30dp" />
 
 </RelativeLayout>
 

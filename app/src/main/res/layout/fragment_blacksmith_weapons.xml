@@ -35,9 +35,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="View Weapons"
-            android:background="#000000"
-            android:id="@+id/bttn_view_blacksmith_weapons" />
+            android:text="View Armor"
+            android:id="@+id/button_view_blacksmith_armor"
+            android:background="#000000" />
 
     </LinearLayout>
 
@@ -51,7 +51,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:layout_above="@+id/button_layout"
-        android:id="@+id/rv_blacksmith_armor">
+        android:id="@+id/rv_blacksmith_weapons">
     </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Armor"
+            android:text="Damage"
             android:id="@+id/textView47"
             android:layout_weight="1"
             android:gravity="center"
@@ -98,7 +98,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blacksmith Armor"
+        android:text="Blacksmith Weapons"
         android:id="@+id/textView16"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"

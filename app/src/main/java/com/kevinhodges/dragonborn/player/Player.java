@@ -7,6 +7,7 @@ import com.kevinhodges.dragonborn.blacksmith.Weapon;
 import com.kevinhodges.dragonborn.potion.Potion;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Kevin on 4/1/2016.
@@ -14,7 +15,9 @@ import java.util.ArrayList;
 public abstract class Player implements Parcelable {
 
     public abstract void heroic();
-
+    public ArrayList<Weapon> weaponInventory;
+    public ArrayList<Armor> armorInventory;
+    public ArrayList<Potion> potionInventory;
 
     //Gold///////////////////////////////////////////////////////////////////////////////////////
     public void spendPlayerGold(int amount) {
@@ -75,7 +78,7 @@ public abstract class Player implements Parcelable {
     //Weapons///////////////////////////////////////////////////////////////////////
     public ArrayList<Weapon> generateBlacksmithWeaponList(String race, int leaguesLeft) {
 
-        int weaponMultiplier = ((10000 - leaguesLeft) / 100) + 1;
+        int weaponMultiplier = ((10000 - leaguesLeft) / 1000) + 1;
 
         Weapon weapon1 = new Weapon(race, weaponMultiplier);
         Weapon weapon2 = new Weapon(race, weaponMultiplier);
@@ -109,8 +112,8 @@ public abstract class Player implements Parcelable {
       return null;
     }
 
-    public Weapon equipWeapon(Weapon weapon) {
-        return null;
+    public void addWeaponToInventory(Weapon weapon) {
+        weaponInventory.add(weapon);
     }
 
 
@@ -152,6 +155,23 @@ public abstract class Player implements Parcelable {
         return null;
     }
 
+    public void subtractDaysLeft(int amountOfDays) {
+        int daysLeft = getDaysLeft();
+        daysLeft -= amountOfDays;
+        setDaysLeft(daysLeft);
+    }
+
+    // This method will return a random number between 2 two passed parameters, inclusive
+    public static int randomInteger(int min, int max) {
+
+        Random rand = new Random();
+
+        // nextInt excludes the top value so we have to add 1 to include the top value
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
+
     //Abstract Getters///////////////////////////////////////////////////////////////////////////
     public abstract String getRace();
 
@@ -172,6 +192,10 @@ public abstract class Player implements Parcelable {
     public abstract int getDaysLeft();
 
     public abstract int getLeaguesLeft();
+
+    public ArrayList<Weapon> getWeaponInventory() {
+        return weaponInventory;
+    }
 
 
     public int getMaxHealth() {

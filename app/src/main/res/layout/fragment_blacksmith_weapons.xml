@@ -35,6 +35,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="Wait"
+            android:id="@+id/bttn_wait_on_blacksmith"
+            android:background="#000000" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="View Armor"
             android:id="@+id/button_view_blacksmith_armor"
             android:background="#000000" />

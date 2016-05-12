@@ -2,6 +2,8 @@ package com.kevinhodges.dragonborn.model;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.kevinhodges.dragonborn.R;
 import com.kevinhodges.dragonborn.blacksmith.Weapon;
 
@@ -20,6 +23,8 @@ import java.util.ArrayList;
  */
 public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.WeaponViewHolder> {
 
+    private final SharedPreferences mSharedPreferences;
+    private final SharedPreferences.Editor editor;
     private ArrayList<Weapon> mData;
     private Context mContext;
     private LayoutInflater mInflater;
@@ -28,6 +33,9 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.WeaponView
         this.mContext = context;
         this.mData = data;
         this.mInflater = LayoutInflater.from(context);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        editor = mSharedPreferences.edit();
     }
 
     @Override
@@ -45,6 +53,8 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.WeaponView
     public int getItemCount() {
         return mData.size();
     }
+
+
 
     public class WeaponViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -82,7 +92,7 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.WeaponView
             builder.setPositiveButton("Buy", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+                    removeWeaponFromBlacksmithList(getAdapterPosition());
                 }
             });
 
@@ -94,6 +104,17 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.WeaponView
             });
 
             builder.show();
+        }
+
+        // Remove the bought item from the list, update the list, then update the shared prefs list
+        public void removeWeaponFromBlacksmithList(int position) {
+            mData.remove(position);
+            notifyDataSetChanged();
+
+            Gson gson = new Gson();
+            String blacksmithWeaponToJSON = gson.toJson(mData);
+            editor.putString("blacksmithWeaponList", blacksmithWeaponToJSON);
+            editor.commit();
         }
     }
 }

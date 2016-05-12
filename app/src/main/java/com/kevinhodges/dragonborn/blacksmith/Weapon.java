@@ -1,5 +1,7 @@
 package com.kevinhodges.dragonborn.blacksmith;
 
+import com.kevinhodges.dragonborn.player.Player;
+
 import java.util.Random;
 
 /**
@@ -66,13 +68,13 @@ public class Weapon {
     // Create a random weapon, then modify it with the players progress so it's just right.
     public int getRandomWeaponDamage(int weaponMultiplier) {
 
-        Random random = new Random();
+        int damage = Player.randomInteger(25, 100);
 
-        return random.nextInt((100) * weaponMultiplier) + 1;
+        return damage * weaponMultiplier;
     }
 
     public int getWeaponCost() {
 
-        return weaponDamage * 5;
+        return weaponDamage * 3;
     }
 }

@@ -85,6 +85,7 @@ public class CampFragment extends Fragment {
             public void onClick(View v) {
 
                 editor.putBoolean("hasWeaponListBeenCreated", false);
+                editor.commit();
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 TravelFragment travelFragment = new TravelFragment();

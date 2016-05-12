@@ -9,4 +9,7 @@ public class Constants {
     public static String LOKEN = "Loken";
     public static String RISEN = "Risen";
 
+    public static final String BLACKSMITH_WEAPON_LIST = "blacksmithWeaponList";
+
+
 }

@@ -184,10 +184,13 @@ public abstract class Player implements Parcelable {
         Log.d(TAG, "////////////////////////////////////////////////////////////////////////////");
     }
 
-    public void subtractDaysLeft(int amountOfDays) {
+    public void subtractDaysLeft(Activity activity, int amountOfDays) {
         int daysLeft = getDaysLeft();
         daysLeft -= amountOfDays;
         setDaysLeft(daysLeft);
+
+        MainActivity mainActivity = (MainActivity) activity;
+        mainActivity.updateDaysTextView(getDaysLeft());
     }
 
     // This method will return a random number between 2 two passed parameters, inclusive

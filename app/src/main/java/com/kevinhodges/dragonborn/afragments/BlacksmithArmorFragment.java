@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.kevinhodges.dragonborn.R;
-import com.kevinhodges.dragonborn.activities.MainActivity;
 import com.kevinhodges.dragonborn.blacksmith.Armor;
 import com.kevinhodges.dragonborn.model.ArmorAdapter;
 import com.kevinhodges.dragonborn.player.Player;
@@ -97,7 +96,7 @@ public class BlacksmithArmorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 builder.setTitle("Wait for new armor");
-                builder.setMessage("Would you like to stay in camp an extra day to wait on new armor to be produced? The current armor will be sold.");
+                builder.setMessage("Would you like to stay in camp an extra day to wait on new weapons and armor to be produced? The current items will be sold.");
                 builder.setPositiveButton("Wait", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -159,13 +158,13 @@ public class BlacksmithArmorFragment extends Fragment {
 
     // This method will subtract a day from the players remaining days, create a new weapon list,
     // and notify the user with a toast
+    // It will also reset the hasWeaponListBeenCreated so that the weapon list will also refresh
     public void waitADayAtBlacksmith() {
-        player.subtractDaysLeft(1);
+        player.subtractDaysLeft(getActivity(), 1);
         createNewArmorList();
         Toast.makeText(getActivity(), "You have " + player.getDaysLeft() + " days left", Toast.LENGTH_SHORT).show();
-        MainActivity mainActivity = (MainActivity) getActivity();
-        mainActivity.updateDaysTextView(player.getDaysLeft());
+
+        editor.putBoolean("hasWeaponListBeenCreated", false);
+        editor.commit();
     }
-
-
 }

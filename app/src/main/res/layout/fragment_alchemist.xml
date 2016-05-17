@@ -1,12 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".afragments.AlchemistFragment">
+    android:layout_height="match_parent">
 
-</RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".afragments.AlchemistFragment">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal"
+            android:text="Evasion Potion: \nDouble your chance to dodge enemy attacks for the rest of the day."
+            android:textSize="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView22" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Invisibility Potion: \nIf used in combat, flee from a fight. If used out of combat, allow rest without the chance of being detected."
+            android:textSize="18dp"
+            android:layout_below="@+id/bttn_buy_evasion"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Lasting Endurance: \nImmediately regain 25 stamina."
+            android:textSize="18dp"
+            android:layout_below="@+id/bttn_buy_invisibility"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Mountain Hide: \nDouble your armor for the rest of the day."
+            android:textSize="18dp"
+            android:layout_below="@+id/bttn_buy_endurance"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Strength of Ikkor: \nDouble your attack power for the rest of the day."
+            android:textSize="18dp"
+            android:layout_below="@+id/bttn_buy_mountain"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxx Gold"
+            android:id="@+id/bttn_buy_evasion"
+            android:layout_below="@+id/textView17"
+            android:layout_centerHorizontal="true"
+            android:minWidth="125dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxx Gold"
+            android:id="@+id/bttn_buy_invisibility"
+            android:minWidth="125dp"
+            android:layout_below="@+id/textView18"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxx Gold"
+            android:id="@+id/bttn_buy_endurance"
+            android:layout_below="@+id/textView19"
+            android:layout_centerHorizontal="true"
+            android:minWidth="125dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxx Gold"
+            android:id="@+id/bttn_buy_mountain"
+            android:minWidth="125dp"
+            android:layout_below="@+id/textView20"
+            android:layout_alignLeft="@+id/bttn_buy_strength"
+            android:layout_alignStart="@+id/bttn_buy_strength" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="xxx Gold"
+            android:id="@+id/bttn_buy_strength"
+            android:layout_below="@+id/textView21"
+            android:layout_centerHorizontal="true"
+            android:minWidth="125dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alchemist"
+            android:id="@+id/textView22"
+            android:textSize="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/bttn_buy_evasion"
+            android:layout_alignEnd="@+id/bttn_buy_evasion"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="@style/PrimaryFont" />
+    </RelativeLayout>
+</ScrollView>

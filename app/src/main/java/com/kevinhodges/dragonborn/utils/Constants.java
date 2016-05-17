@@ -10,6 +10,8 @@ public class Constants {
     public static String RISEN = "Risen";
 
     public static final String BLACKSMITH_WEAPON_LIST = "blacksmithWeaponList";
+    public static final String BLACKSMITH_ARMOR_LIST = "blacksmithArmorList";
+
 
 
 }

@@ -1,7 +1,11 @@
 package com.kevinhodges.dragonborn.player;
 
+import android.app.Activity;
 import android.os.Parcelable;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.kevinhodges.dragonborn.activities.MainActivity;
 import com.kevinhodges.dragonborn.blacksmith.Armor;
 import com.kevinhodges.dragonborn.blacksmith.Weapon;
 import com.kevinhodges.dragonborn.potion.Potion;
@@ -14,41 +18,63 @@ import java.util.Random;
  */
 public abstract class Player implements Parcelable {
 
+    private static final String TAG = "Player";
+    private MainActivity mainActivity;
+
     public abstract void heroic();
+
     public ArrayList<Weapon> weaponInventory;
     public ArrayList<Armor> armorInventory;
-    public ArrayList<Potion> potionInventory;
+    public ArrayList<Potion> potionInventory = new ArrayList<>();
 
     //Gold///////////////////////////////////////////////////////////////////////////////////////
-    public void spendPlayerGold(int amount) {
-        int playerGold = getGold();
-        playerGold -= amount;
+    public void spendPlayerGold(Activity activity, int amount) {
 
-        setGold(playerGold);
+        int playerGold = getGold();
+
+        if (amount <= playerGold) {
+            playerGold -= amount;
+
+            setGold(playerGold);
+
+            mainActivity = (MainActivity) activity;
+            mainActivity.updateGoldTextView(playerGold);
+
+        } else {
+            Toast.makeText(activity, "You do not have enough gold", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Health///////////////////////////////////////////////////////////////////////////////////
-    public int healPlayerToFull() {
+    public int healPlayerToFull(Activity activity) {
+
+        mainActivity = (MainActivity) activity;
+
         String playerRace = getRace();
 
-        switch(playerRace) {
+        switch (playerRace) {
             case "Uman":
-                 setHealth(200);
-                 break;
+                setHealth(200);
+                mainActivity.updateHealthTextView(200);
+                break;
 
             case "Faerie":
-                 setHealth(50);
-                 break;
+                setHealth(50);
+                mainActivity.updateHealthTextView(50);
+                break;
 
             case "Loken":
-                 setHealth(100);
-                 break;
+                setHealth(100);
+                mainActivity.updateHealthTextView(100);
+                break;
 
             case "Risen":
-                 setHealth(100);
-                 break;
+                setHealth(100);
+                mainActivity.updateHealthTextView(100);
+                break;
         }
-      return getHealth();
+
+        return getHealth();
     }
 
     //Attacks////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +112,7 @@ public abstract class Player implements Parcelable {
         Weapon weapon4 = new Weapon(race, weaponMultiplier);
         Weapon weapon5 = new Weapon(race, weaponMultiplier);
 
-        ArrayList <Weapon> weaponObjectsArray = new ArrayList<>();
+        ArrayList<Weapon> weaponObjectsArray = new ArrayList<>();
         weaponObjectsArray.add(weapon1);
         weaponObjectsArray.add(weapon2);
         weaponObjectsArray.add(weapon3);
@@ -109,7 +135,7 @@ public abstract class Player implements Parcelable {
 
     // TODO: 4/1/2016  Pass WeaponObject that is clicked to the buy dialog then add it to inventory
     public Weapon buyWeapon(Weapon weapon) {
-      return null;
+        return null;
     }
 
     public void addWeaponToInventory(Weapon weapon) {
@@ -117,9 +143,14 @@ public abstract class Player implements Parcelable {
     }
 
 
-
     //Armor////////////////////////////////////////////////////////////////////////////////
-    public ArrayList<Integer> generateBlackSmithArmorList(boolean isUman, int leaguesLeft) {
+    public ArrayList<Armor> generateBlacksmithArmorList(String race, int leaguesLeft) {
+
+        boolean isUman = false;
+
+        if (race.equals("Uman")) {
+            isUman = true;
+        }
 
         int armorMultiplier = ((10000 - leaguesLeft) / 100) + 1;
 
@@ -129,30 +160,28 @@ public abstract class Player implements Parcelable {
         Armor armor4 = new Armor(isUman, armorMultiplier);
         Armor armor5 = new Armor(isUman, armorMultiplier);
 
-        Armor[] armorObjectsArray = {armor1, armor2, armor3, armor4, armor5};
-        ArrayList armorList = new ArrayList();
+        ArrayList<Armor> armorObjectsArray = new ArrayList<>();
+        armorObjectsArray.add(armor1);
+        armorObjectsArray.add(armor2);
+        armorObjectsArray.add(armor3);
+        armorObjectsArray.add(armor4);
+        armorObjectsArray.add(armor5);
 
-        for (Armor armor : armorObjectsArray) {
-            int armorAmount = armor.getArmor();
-            int armorCost = armor.getCost();
-
-            armorList.add(armorAmount);
-            armorList.add(armorCost);
-        }
-
-        return armorList;
+        return armorObjectsArray;
     }
 
     // Armor is auto equipped
-    public void buyArmor(int cost, int armorAmount, int gold, int armor) {
-        gold -= cost;
-        armor += armorAmount;
+    public void buyArmor(int armorAmount) {
+        armorAmount += armorAmount;
     }
 
     //Potions///////////////////////////////////////////////////////////////////////////
-
-    public ArrayList<Potion> generatePotionList() {
-        return null;
+    public void addPotionToInventory(Potion potionType) {
+        potionInventory.add(potionType);
+        for (Potion potion : potionInventory) {
+            Log.d(TAG, "addPotionToInventory: Amount of Potions in inventory : " + potion.getPotionName());
+        }
+        Log.d(TAG, "////////////////////////////////////////////////////////////////////////////");
     }
 
     public void subtractDaysLeft(int amountOfDays) {
@@ -203,24 +232,24 @@ public abstract class Player implements Parcelable {
 
         int health = 0;
 
-        switch(race) {
+        switch (race) {
             case "Uman":
-                 health = 200;
-                 break;
+                health = 200;
+                break;
 
             case "Faerie":
-                 health = 50;
-                 break;
+                health = 50;
+                break;
 
             case "Loken":
-                 health = 100;
-                 break;
+                health = 100;
+                break;
 
             case "Risen":
-                 health = 100;
-                 break;
+                health = 100;
+                break;
         }
-       return health;
+        return health;
     }
 
     // Abstract Setters/////////////////////////////////////////////////////////////////////////////
@@ -243,8 +272,6 @@ public abstract class Player implements Parcelable {
     public abstract void setDaysLeft(int daysLeft);
 
     public abstract void setLeaguesLeft(int leaguesLeft);
-
-
 
 
 }

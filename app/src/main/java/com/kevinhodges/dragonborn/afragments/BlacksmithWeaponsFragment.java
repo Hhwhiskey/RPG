@@ -53,12 +53,12 @@ public class BlacksmithWeaponsFragment extends Fragment {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = mSharedPreferences.edit();
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
 
 
         //UI Declarations///////////////////////////////////////////////////////////
         blacksmithLeaveButton = (Button) view.findViewById(R.id.bttn_leave_blacksmith);
-        mBlacksmithWaitButton = (Button) view.findViewById(R.id.bttn_wait_on_blacksmith);
+        mBlacksmithWaitButton = (Button) view.findViewById(R.id.bttn_wait_on_blacksmith_weapon);
         viewArmorButton = (Button) view.findViewById(R.id.button_view_blacksmith_armor);
         mWeaponRecyclerView = (RecyclerView) view.findViewById(R.id.rv_blacksmith_weapons);
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -89,7 +89,7 @@ public class BlacksmithWeaponsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 builder.setTitle("Wait for new weapons");
-                builder.setMessage("Would you like to stay in camp an extra day to wait on new weapons to be produced?");
+                builder.setMessage("Would you like to stay in camp an extra day to wait on new weapons to be produced? The current weapons will be sold.");
                 builder.setPositiveButton("Wait", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -126,7 +126,7 @@ public class BlacksmithWeaponsFragment extends Fragment {
         mBlacksmithWeaponList = player.generateBlacksmithWeaponList(player.getRace(), player.getLeaguesLeft());
         Gson gson = new Gson();
         String blacksmithWeaponToJSON = gson.toJson(mBlacksmithWeaponList);
-        editor.putString("blacksmithWeaponList", blacksmithWeaponToJSON);
+        editor.putString(Constants.BLACKSMITH_WEAPON_LIST, blacksmithWeaponToJSON);
         editor.commit();
 
         mWeaponAdapter = new WeaponAdapter(getActivity(), mBlacksmithWeaponList);
@@ -138,7 +138,7 @@ public class BlacksmithWeaponsFragment extends Fragment {
 
         Gson gson = new Gson();
 
-        if (mSharedPreferences.contains("blacksmithWeaponList")) {
+        if (mSharedPreferences.contains(Constants.BLACKSMITH_WEAPON_LIST)) {
 
             String json = mSharedPreferences.getString(Constants.BLACKSMITH_WEAPON_LIST, "");
             Weapon[] jsonList = gson.fromJson(json, Weapon[].class);

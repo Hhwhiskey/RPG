@@ -7,18 +7,28 @@ import java.util.Random;
  */
 public class Armor {
 
-    private int armor;
-    private int cost;
+    private String[] armorTypeArray = {"Helm", "Shoulders", "Chest", "Pants", "Boots", "Bracers", "Gloves"};
+    public String armorType;
+    public int armorAmount;
+    public int armorCost;
 
     public Armor(boolean isUman, int armorMultiplier) {
-        this.armor = generateRandomArmorAmount(isUman, armorMultiplier);
-        this.cost = generateArmorCost(isUman);
+        this.armorType = generateRandomArmorType();
+        this.armorAmount = generateRandomArmorAmount(isUman, armorMultiplier);
+        this.armorCost = generateArmorCost(isUman);
+    }
+
+    public String generateRandomArmorType() {
+
+        Random random = new Random();
+        int randomRange = random.nextInt(6);
+
+        return armorTypeArray[randomRange];
     }
 
     public int generateRandomArmorAmount(boolean isUman, int armorMultiplier) {
 
         Random random = new Random();
-
 
         if (isUman) {
             return random.nextInt((100 - 1) + 1) * (armorMultiplier) * 2;
@@ -33,19 +43,23 @@ public class Armor {
         
         if (isUman) {
 
-            return armor * 50;
+            return armorAmount * 6;
 
         } else {
 
-            return armor * 100;
+            return armorAmount * 12;
         }
     }
 
-    public int getArmor() {
-        return armor;
+    public String getArmorType() {
+        return armorType;
+    }
+
+    public int getArmorAmount() {
+        return armorAmount;
     }
 
     public int getCost() {
-        return cost;
+        return armorCost;
     }
 }

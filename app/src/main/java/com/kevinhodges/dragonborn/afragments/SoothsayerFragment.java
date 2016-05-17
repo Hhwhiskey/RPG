@@ -64,11 +64,11 @@ public class SoothsayerFragment extends Fragment {
 
                 } else {
 
-                    player.spendPlayerGold(soothsayerHealCostInt);
-                    player.healPlayerToFull();
+                    player.spendPlayerGold(getActivity(), soothsayerHealCostInt);
+                    player.healPlayerToFull(getActivity());
 
-                    mainActivity.updateGoldTextView(player.getGold());
-                    mainActivity.updateHealthTextView(player.healPlayerToFull());
+//                    mainActivity.updateGoldTextView(player.getGold());
+//                    mainActivity.updateHealthTextView(player.healPlayerToFull());
 
                     Toast.makeText(getActivity(), "You have been healed", Toast.LENGTH_SHORT).show();
                 }
@@ -79,7 +79,7 @@ public class SoothsayerFragment extends Fragment {
 
     public int generateSoothsayerHealCost(int leaguesLeft) {
 
-        int priceMultiplier = 10010 - leaguesLeft ;
+        int priceMultiplier = (10010 - leaguesLeft) * 10;
 
         return priceMultiplier;
     }

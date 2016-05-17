@@ -11,11 +11,13 @@ public class Weapon {
 
     private static final String TAG = "Weapon";
     public String weaponType;
+    public final int weaponDamage;
+    public final int weaponCost;
+    public boolean isLoken = false;
     private final String[] umanRisenWeaponsArray = {"Dagger", "1-handed Sword", "2-handed Sword", "1-handed Axe", "2-handed Axe"};
     private final String[] lokenWeaponsArray = {"War Axe", "War hammer", "War Mace", "Scythe", "Polearm"};
     private final String[] faerieWeaponsArray = {"Staff", "Wand", "Scepter", "Orb", "Spellbook"};
-    public final int weaponDamage;
-    public final int weaponCost;
+
 
 
     public Weapon(String playerRace, int weaponMultiplier) {
@@ -28,6 +30,7 @@ public class Weapon {
 
             case "Loken":
                 this.weaponType = generateRandomLokenWeaponType();
+                isLoken = true;
                 break;
 
             case "Faerie":
@@ -35,8 +38,8 @@ public class Weapon {
                 break;
         }
 
-        this.weaponDamage = getRandomWeaponDamage(weaponMultiplier);
-        this.weaponCost = getWeaponCost();
+        this.weaponDamage = getRandomWeaponDamage(isLoken, weaponMultiplier);
+        this.weaponCost = getWeaponCost(isLoken);
     }
 
     public String generateRandomUmanRisenWeaponType() {
@@ -66,15 +69,29 @@ public class Weapon {
     }
 
     // Create a random weapon, then modify it with the players progress so it's just right.
-    public int getRandomWeaponDamage(int weaponMultiplier) {
+    public int getRandomWeaponDamage(boolean isLoken, int weaponMultiplier) {
 
-        int damage = Player.randomInteger(25, 100);
+        int damage = 0;
+
+        if (isLoken) {
+             damage = Player.randomInteger(50, 200);
+        } else {
+             damage = Player.randomInteger(25, 100);
+        }
 
         return damage * weaponMultiplier;
     }
 
-    public int getWeaponCost() {
+    public int getWeaponCost(boolean isLoken) {
 
-        return weaponDamage * 3;
+        int weaponCost;
+
+        if (isLoken) {
+            weaponCost = weaponDamage * 2;
+        } else {
+            weaponCost = weaponDamage * 4;
+        }
+
+        return weaponCost;
     }
 }

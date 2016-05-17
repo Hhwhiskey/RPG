@@ -3,8 +3,6 @@ package com.kevinhodges.dragonborn.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -22,7 +20,6 @@ public class MainActivity extends FragmentActivity {
     private TextView daysTV;
     private TextView leaguesTV;
     private FrameLayout mainFragmentContainer;
-    private Button blacksmithButton;
     private Player player;
     private TextView goldTV;
 
@@ -43,7 +40,6 @@ public class MainActivity extends FragmentActivity {
         daysTV = (TextView) findViewById(R.id.tv_player_days_left);
         leaguesTV = (TextView) findViewById(R.id.tv_player_leagues_left);
         mainFragmentContainer = (FrameLayout) findViewById(R.id.main_fragment_container);
-        blacksmithButton = (Button) findViewById(R.id.button_goto_blacksmith);
         ///////////////////////////////////////////////////////////////////////////
 
         healthTV.setText("Health: " + String.valueOf(player.getHealth()));

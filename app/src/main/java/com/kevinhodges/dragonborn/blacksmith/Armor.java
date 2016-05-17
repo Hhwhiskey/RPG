@@ -31,11 +31,11 @@ public class Armor {
         Random random = new Random();
 
         if (isUman) {
-            return random.nextInt((100 - 1) + 1) * (armorMultiplier) * 2;
+            return random.nextInt(((100 - 50) + 1) + 50) * (armorMultiplier) * 2;
 
         } else {
 
-            return random.nextInt((100 - 1) + 1) * (armorMultiplier);
+            return random.nextInt(((100 - 50) + 1) + 50) * (armorMultiplier);
         }
     }
 

@@ -87,7 +87,7 @@ public class BlacksmithWeaponsFragment extends Fragment {
         mBlacksmithWaitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setTitle("Wait for new weapons");
+                builder.setTitle("Wait for new blacksmith items");
                 builder.setMessage("Would you like to stay in camp an extra day to wait on new weapons and armor to be produced? The current items will be sold.");
                 builder.setPositiveButton("Wait", new DialogInterface.OnClickListener() {
                     @Override

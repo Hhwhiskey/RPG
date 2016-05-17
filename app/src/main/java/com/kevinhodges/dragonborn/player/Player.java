@@ -152,7 +152,7 @@ public abstract class Player implements Parcelable {
             isUman = true;
         }
 
-        int armorMultiplier = ((10000 - leaguesLeft) / 100) + 1;
+        int armorMultiplier = ((10000 - leaguesLeft)) + 1;
 
         Armor armor1 = new Armor(isUman, armorMultiplier);
         Armor armor2 = new Armor(isUman, armorMultiplier);

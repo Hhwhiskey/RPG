@@ -3,10 +3,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".afragments.TravelFragment">
+    tools:context=".afragments.TravelFragment"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:id="@+id/linearLayout2"
+        android:layout_alignParentBottom="true">
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rest"
+            android:layout_weight=".5"
+            android:textSize="20dp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:id="@+id/bttn_rest" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Travel"
+            android:layout_weight=".5"
+            android:textSize="20sp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:id="@+id/bttn_travel" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp">
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Hunt"
+            android:layout_weight=".5"
+            android:textSize="20dp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:id="@+id/bttn_hunt" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Potions"
+            android:layout_weight=".5"
+            android:textSize="20dp"
+            android:typeface="serif"
+            android:background="#000000"
+            android:textColor="#FFFFFF"
+            android:id="@+id/bttn_potions" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Travel"
+        android:id="@+id/textView23"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/PrimaryFont"
+        android:textSize="30dp" />
+
 
 </RelativeLayout>

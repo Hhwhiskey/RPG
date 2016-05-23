@@ -2,6 +2,7 @@ package com.kevinhodges.dragonborn.afragments;
 
 import android.app.Dialog;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class CombatFragment extends Fragment {
     private Button fleeButton;
     private static int enemyCount;
     public Player player;
+    private AlertDialog.Builder mBuilder;
 
 
     @Nullable
@@ -45,16 +47,21 @@ public class CombatFragment extends Fragment {
 
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Intent intent = getActivity().getIntent();
+        player = intent.getParcelableExtra("playerObject");
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         editor = sharedPreferences.edit();
+
+        mBuilder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
 
         isMusicPlaying = sharedPreferences.getBoolean("isMusicPlaying", false);
 
         //UI Declarations///////////////////////////////////////////////////////////
-        attackButton = (Button) view.findViewById(R.id.button_attack);
-        heroicButton = (Button) view.findViewById(R.id.button_heroic);
-        potionsButton = (Button) view.findViewById(R.id.button_potions);
-        fleeButton = (Button) view.findViewById(R.id.button_flee);
+        attackButton = (Button) view.findViewById(R.id.bttn_attack);
+        heroicButton = (Button) view.findViewById(R.id.bttn_heroic);
+        potionsButton = (Button) view.findViewById(R.id.bttn_potions);
+        fleeButton = (Button) view.findViewById(R.id.bttn_flee);
         ///////////////////////////////////////////////////////////////////////////
 
         attackButton.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +121,12 @@ public class CombatFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if (player.fleeFromCombat(getActivity())) {
+                   FragmentTransaction ft = getFragmentManager().beginTransaction();
+                   TravelFragment travelFragment = new TravelFragment();
+                   ft.replace(R.id.main_fragment_container, travelFragment);
+                   ft.commit();
+               }
             }
         });
 
@@ -128,6 +141,7 @@ public class CombatFragment extends Fragment {
         Log.d(TAG, enemyRace + " Stamina: " + enemyStamina);
         Log.d(TAG, enemyRace + " Armor: " + enemyArmor);
         Log.d(TAG, enemyRace + " Damage: " + enemyDamage);
+
 
         return view;
     }

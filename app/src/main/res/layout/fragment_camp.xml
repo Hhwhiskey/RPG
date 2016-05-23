@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="Blacksmith"
             android:layout_weight=".5"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:typeface="serif"
             android:background="#000000"
             android:textColor="#FFFFFF"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Alchemist"
             android:layout_weight=".5"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:typeface="serif"
             android:background="#000000"
             android:textColor="#FFFFFF"
@@ -44,8 +44,7 @@
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="true"
         android:id="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp">
+        android:layout_centerHorizontal="true">
 
 
         <Button
@@ -53,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="Soothsayer"
             android:layout_weight=".5"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:typeface="serif"
             android:background="#000000"
             android:textColor="#FFFFFF"
@@ -64,7 +63,7 @@
             android:layout_height="wrap_content"
             android:text="Travel"
             android:layout_weight=".5"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:typeface="serif"
             android:background="#000000"
             android:textColor="#FFFFFF"

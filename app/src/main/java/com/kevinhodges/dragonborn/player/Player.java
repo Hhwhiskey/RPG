@@ -77,6 +77,7 @@ public abstract class Player implements Parcelable {
         return getHealth();
     }
 
+
     //Attacks////////////////////////////////////////////////////////////////////////////////////
     public int weakAttack(int attackPower, int weaponDamage) {
 
@@ -190,7 +191,25 @@ public abstract class Player implements Parcelable {
         setDaysLeft(daysLeft);
 
         MainActivity mainActivity = (MainActivity) activity;
-        mainActivity.updateDaysTextView(getDaysLeft());
+        mainActivity.updateDaysTextView(daysLeft);
+    }
+
+    public void subtractLeaguesLeft(Activity activity, int amountOfLeagues) {
+        int leaguesLeft = getLeaguesLeft();
+        leaguesLeft -= amountOfLeagues;
+        setLeaguesLeft(leaguesLeft);
+
+        MainActivity mainActivity = (MainActivity) activity;
+        mainActivity.updateLeaguesTextView(leaguesLeft);
+    }
+
+    public void subtractStamina(Activity activity, int amountOfStamina) {
+        int stamina = getStamina();
+        stamina -= amountOfStamina;
+        setStamina(stamina);
+
+        MainActivity mainActivity = (MainActivity) activity;
+        mainActivity.updateStaminaTextView(stamina);
     }
 
     // This method will return a random number between 2 two passed parameters, inclusive
@@ -202,6 +221,56 @@ public abstract class Player implements Parcelable {
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
         return randomNum;
+    }
+
+    // Will flee from combat if player has at least 50 stamina
+    public boolean fleeFromCombat(Activity activity) {
+        int stamina = getStamina();
+
+        if (stamina >= 25) {
+            Toast.makeText(activity, "You flee from combat at the cost of 25 stamina", Toast.LENGTH_SHORT).show();
+            int updatedStamina = stamina - 25;
+            setStamina(updatedStamina);
+
+            MainActivity mainActivity = (MainActivity) activity;
+            mainActivity.updateStaminaTextView(updatedStamina);
+
+            return true;
+
+        } else {
+            Toast.makeText(activity, "You are too tired to flee form combat, you must have at least 25 stamina", Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
+    // 50% chance the player will be able to rest. A rest grants full stamina. Otherwise
+    // receive no stamina and enter combat
+    public boolean rest(Activity activity) {
+
+        String race = getRace();
+        Random random = new Random();
+
+        boolean isPlayerSpotted = random.nextBoolean();
+
+        if (isPlayerSpotted) {
+            Toast.makeText(activity, "You have been discovered!", Toast.LENGTH_SHORT).show();
+            return false;
+
+        } else {
+
+            if (race.equals("Risen")) {
+                setStamina(200);
+            } else {
+                setStamina(100);
+            }
+
+            MainActivity mainActivity = (MainActivity) activity;
+            mainActivity.updateStaminaTextView(getStamina());
+
+            Toast.makeText(activity, "You feel well rested!", Toast.LENGTH_SHORT).show();
+
+            return true;
+        }
     }
 
     //Abstract Getters///////////////////////////////////////////////////////////////////////////

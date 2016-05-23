@@ -1,8 +1,10 @@
 package com.kevinhodges.dragonborn.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -22,15 +24,17 @@ public class MainActivity extends FragmentActivity {
     private FrameLayout mainFragmentContainer;
     private Player player;
     private TextView goldTV;
+    private AlertDialog.Builder mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mBuilder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+
         Intent intent = getIntent();
         player = intent.getParcelableExtra("playerObject");
-
 
         //UI Declarations///////////////////////////////////////////////////////////
         healthTV = (TextView) findViewById(R.id.tv_player_health);
@@ -94,7 +98,27 @@ public class MainActivity extends FragmentActivity {
         int count = getFragmentManager().getBackStackEntryCount();
 
         if (count == 0) {
-            super.onBackPressed();
+
+            mBuilder.setTitle("Exit");
+            mBuilder.setMessage("Are you sure you would like to exit to the main menu?");
+            mBuilder.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent mainMenuIntent = new Intent(MainActivity.this, TitleActivity.class);
+                    startActivity(mainMenuIntent);
+                }
+            });
+
+            mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            mBuilder.show();
+
+//            super.onBackPressed();
             //additional code
         } else {
             getFragmentManager().popBackStack();

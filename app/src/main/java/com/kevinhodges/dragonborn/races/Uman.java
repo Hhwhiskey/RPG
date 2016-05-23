@@ -11,12 +11,12 @@ import com.kevinhodges.dragonborn.player.Player;
 public class Uman extends Player {
 
     private String race = "Uman";
-    private int health = 199;
-    private int stamina = 50;
+    private int health = 200;
+    private int stamina = 100;
     private int armor = 20;
     private int attackPower = 100;
     private int weaponDamage = 10;
-    private int gold = 100;
+    private int gold = 10;
     private int daysLeft = 400;
     private int leaguesLeft = 10000;
     private String weaponType = "1-handed Sword";
